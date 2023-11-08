@@ -1,98 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 13, in script
-    call screen countdown
-  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/mini-game.rpy", line 54, in execute
-    screen countdown(hov1 = -2):
-  File "game/mini-game.rpy", line 54, in execute
-    screen countdown(hov1 = -2):
-  File "game/mini-game.rpy", line 58, in execute
-    frame:
-  File "game/mini-game.rpy", line 64, in execute
-    vbox:
-  File "game/mini-game.rpy", line 65, in execute
-    for i in listOfButtons:
-  File "game/mini-game.rpy", line 66, in execute
-    hbox:
-  File "game/mini-game.rpy", line 67, in execute
-    for t in i:
-  File "game/mini-game.rpy", line 68, in execute
-    button:
-  File "game/mini-game.rpy", line 68, in keywords
-    button:
-  File "game/mini-game.rpy", line 69, in keywords
-    if hov == t[1] and not((str(t[1])).isalpha()):
-  File "game/mini-game.rpy", line 69, in keywords
-    if hov == t[1] and not((str(t[1])).isalpha()):
-  File "game/mini-game.rpy", line 71, in <module>
-    action Notify(d2[t[1]])
-TypeError: list indices must be integers or slices, not str
+  File "game/mini-game.rpy", line 2, in script
+    init python:
+  File "game/mini-game.rpy", line 2, in script
+    init python:
+  File "game/mini-game.rpy", line 17, in <module>
+    while not(ind in inds):
+NameError: name 'ind' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 13, in script
-    call screen countdown
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
-    self.call("execute")
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
-    d.visit_all(callback, seen)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
-    d.visit_all(callback, seen)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
-    d.visit_all(callback, seen)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
-    callback(self)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
-    self.update()
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
-    self.screen.function(**self.scope)
-  File "game/mini-game.rpy", line 54, in execute
-    screen countdown(hov1 = -2):
-  File "game/mini-game.rpy", line 54, in execute
-    screen countdown(hov1 = -2):
-  File "game/mini-game.rpy", line 58, in execute
-    frame:
-  File "game/mini-game.rpy", line 64, in execute
-    vbox:
-  File "game/mini-game.rpy", line 65, in execute
-    for i in listOfButtons:
-  File "game/mini-game.rpy", line 66, in execute
-    hbox:
-  File "game/mini-game.rpy", line 67, in execute
-    for t in i:
-  File "game/mini-game.rpy", line 68, in execute
-    button:
-  File "game/mini-game.rpy", line 68, in keywords
-    button:
-  File "game/mini-game.rpy", line 69, in keywords
-    if hov == t[1] and not((str(t[1])).isalpha()):
-  File "game/mini-game.rpy", line 69, in keywords
-    if hov == t[1] and not((str(t[1])).isalpha()):
-  File "game/mini-game.rpy", line 71, in <module>
-    action Notify(d2[t[1]])
-TypeError: list indices must be integers or slices, not str
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\bootstrap.py", line 275, in bootstrap
+    renpy.main.main()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\main.py", line 564, in main
+    renpy.game.context().run(node)
+  File "game/mini-game.rpy", line 2, in script
+    init python:
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 444, in raise_
+  File "game/mini-game.rpy", line 2, in script
+    init python:
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/mini-game.rpy", line 17, in <module>
+    while not(ind in inds):
+NameError: name 'ind' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
 ProjectOPD 1.0
-Wed Nov  8 22:00:25 2023
+Thu Nov  9 01:13:35 2023

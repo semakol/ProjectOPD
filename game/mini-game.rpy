@@ -9,11 +9,12 @@ init python:
     width = 16
     listOfButtons = [[] for i in range(height)]
     flag = True
+    ind = 0
     for y in range(height):
         k = 0
         while k < width:
             if random.randint(1, 5) == 1 and flag:
-                ind = random.randint(0, len(d2)-1)
+                ind += 1
                 but = d2[ind]
                 if (k + len(but) <= width):
                     listOfButtons[y].append((but, ind))
@@ -25,11 +26,11 @@ init python:
                     break
                 else:
                     ind1 = random.randint(0, len(splitChars)-1)
-                    listOfButtons[y].append((splitChars[ind1], splitChars[ind1]))
+                    listOfButtons[y].append((splitChars[ind1], -ind1-1))
                     flag = True
             else:
                 ind1 = random.randint(0, len(splitChars)-1)
-                listOfButtons[y].append((splitChars[ind1], splitChars[ind1]))
+                listOfButtons[y].append((splitChars[ind1], -ind1-1))
                 flag = True
             k = len(''.join([i[0] for i in listOfButtons[y]]))
 
@@ -42,16 +43,16 @@ define font_hack = "consolas.ttf"
 
 style button:
     background "#000000"
-    hover_background "#3e5aa8"
+    hover_background "#04408f"
 
 style button_hover:
-    background "#4e1010"
+    background "#04408f"
 
 screen co(hov):
     zorder 100
-    timer 0.001 action [Show('countdown', hov1 = hov), Hide("co")]
+    timer 0.00000001 action [Show('countdown', hov1 = hov), Hide("co")]
 
-screen countdown(hov1 = -2):
+screen countdown(hov1 = -100):
     tag menu
     zorder 0
     $ hov = hov1
@@ -66,18 +67,18 @@ screen countdown(hov1 = -2):
                 hbox:
                     for t in i:
                         button:
-                            if hov == t[1] and ((str(t[1])).isalpha()):
+                            if hov == t[1] and (t[1] >= 0):
                                 style style.button_hover
                                 action Notify(d2[t[1]])
                             else:
                                 style style.button
-                                if ((str(t[1])).isalpha()):
+                                if (t[1] >= 0):
                                     action Notify(d2[t[1]])
                                 else:
-                                    action Notify(t[1])
+                                    action Notify(splitChars[abs(t[1])-1])
                             align (0.5, 0.5)
                             hovered Show("co", hov = t[1])
-                            unhovered Show("co", hov = -2)
+                            unhovered Show("co", hov = -100)
                             xpadding 0
                             top_padding 5
                             bottom_padding 0
