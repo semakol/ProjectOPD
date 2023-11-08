@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/mini-game.rpy", line 53: 'zonder' is not a keyword argument or valid child of the screen statement.
+    zonder
+          ^
+
+Ren'Py Version: Ren'Py 8.1.2.23090503
+Wed Nov  8 21:42:39 2023

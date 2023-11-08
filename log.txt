@@ -1,34 +1,837 @@
-Mon Oct 30 22:30:55 2023
+Wed Nov  8 21:53:12 2023
 Windows-10-10.0.19045
 Ren'Py 8.1.2.23090503
  
 
 Bootstrap to the start of init.init. took 0.05s
 Early init. took 0.01s
-Loader init. took 0.09s
+Loader init. took 0.05s
 Loading error handling. took 0.05s
-Loading script. took 0.26s
-Loading save slot metadata. took 0.04s
+Loading script. took 0.39s
+Loading save slot metadata. took 0.05s
 Loading persistent. took 0.00s
-Running init code. took 0.09s
+Running init code. took 0.10s
 Loading analysis data. took 0.02s
 Analyze and compile ATL. took 0.00s
-Reloading save slot metadata. took 0.04s
+Reloading save slot metadata. took 0.05s
 Index archives took 0.00s
-Dump and make backups. took 0.14s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.11s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
 Initial gc. took 0.03s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object. took 0.38s
+Creating interface object. took 0.47s
 Cleaning stores took 0.00s
 Init translation took 0.05s
 Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.04s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.20s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 76, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 76, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+Resetting cache.
+Bootstrap to the start of init.init. took 128.14s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.04s
+Loading script. took 0.24s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+Running init code. took 0.05s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.12s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.07s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.53s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 75, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(hov)).isalpha()):
+  File "game/mini-game.rpy", line 75, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+Resetting cache.
+Bootstrap to the start of init.init. took 253.29s
+Early init. took 0.00s
+Loader init. took 0.10s
+Loading error handling. took 0.03s
+Loading script. took 0.30s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+Running init code. took 0.08s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.08s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.15s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.08s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.57s
+Cleaning stores took 0.00s
+Init translation took 0.09s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.10s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in <module>
+    if not((char(hov)).isalpha()):
+NameError: name 'char' is not defined
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in <module>
+    if not((char(hov)).isalpha()):
+NameError: name 'char' is not defined
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
 Load screen analysis took 0.04s
 Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.09s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in <module>
+    if not((char(hov)).isalpha()):
+NameError: name 'char' is not defined
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((char(hov)).isalpha()):
+  File "game/mini-game.rpy", line 74, in <module>
+    if not((char(hov)).isalpha()):
+NameError: name 'char' is not defined
+Resetting cache.
+Bootstrap to the start of init.init. took 310.29s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.03s
+Loading script. took 0.26s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+Running init code. took 0.07s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.06s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.12s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.09s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.59s
+Cleaning stores took 0.00s
+Init translation took 0.07s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 75, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 72, in keywords
+    else:
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 74, in keywords
+    if not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 75, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+Resetting cache.
+Bootstrap to the start of init.init. took 430.91s
+Early init. took 0.00s
+Loader init. took 0.08s
+Loading error handling. took 0.03s
+Loading script. took 0.25s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+Running init code. took 0.06s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.10s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.06s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.39s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.10s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 71, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+
+While running game code:
+  File "game/script.rpy", line 13, in script
+    call screen countdown
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 54, in execute
+    screen countdown(hov1 = -2):
+  File "game/mini-game.rpy", line 58, in execute
+    frame:
+  File "game/mini-game.rpy", line 64, in execute
+    vbox:
+  File "game/mini-game.rpy", line 65, in execute
+    for i in listOfButtons:
+  File "game/mini-game.rpy", line 66, in execute
+    hbox:
+  File "game/mini-game.rpy", line 67, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 68, in execute
+    button:
+  File "game/mini-game.rpy", line 68, in keywords
+    button:
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 69, in keywords
+    if hov == t[1] and not((str(t[1])).isalpha()):
+  File "game/mini-game.rpy", line 71, in <module>
+    action Notify(d2[t[1]])
+TypeError: list indices must be integers or slices, not str
+Resetting cache.
+Bootstrap to the start of init.init. took 476.99s
+Early init. took 0.00s
+Loader init. took 0.09s
+Loading error handling. took 0.03s
+Loading script. took 0.26s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+Running init code. took 0.07s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.05s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\User\\AppData\\Roaming/RenPy/backups\\ProjectOPD':
+Dump and make backups. took 0.10s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.08s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: Disabled thread optimizations.
+Creating interface object. took 0.45s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.10s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'NVIDIA Corporation'"
+Renderer: b'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 531.41'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Maximum texture size: 4096x4096
