@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 375: ATL block expects a non-empty block.
-    at transform:
-                 ^
+File "game/script.rpy", line 31: expected statement.
+    D show
+      ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Mon Nov 13 17:11:43 2023
+Mon Nov 13 20:53:40 2023

@@ -23,7 +23,7 @@ define gui.show_name = False
 
 ## Версия игры.
 
-define config.version = "1.0"
+define config.version = "0.1 EARLY ALPHA"
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -46,9 +46,9 @@ define build.name = "ProjectOPD"
 ## игроку по умолчанию. Установка одной из них в False скроет соответствующий
 ## микшер.
 
-define config.has_sound = True
-define config.has_music = True
-define config.has_voice = True
+define config.has_sound = False
+define config.has_music = False
+define config.has_voice = False
 
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом

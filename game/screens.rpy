@@ -112,6 +112,7 @@ screen say(who, what):
             slow_cps 20
             slow_cps_multiplier 2
 
+       
 
     ## Если есть боковое изображение ("голова"), показывает её поверх текста.
     ## По стандарту не показывается на варианте для мобильных устройств — мало
@@ -210,7 +211,15 @@ style input:
 
 screen choice(items):
     style_prefix "choice"
-
+    # window:
+    #     id "window"
+    #     window:
+    #         id "namebox"
+    #         style "namebox"
+    #         text 'Игорь':
+    #             color "#1d831d"
+    #             slow_cps 20
+    #             size 50
     vbox:
         for i in items:
             textbutton i.caption action i.action
@@ -222,7 +231,7 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 940
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -371,9 +380,7 @@ screen main_menu():
 
     add "gui/My/logo.png":
         xalign 0.5
-        zoom 0.8
-        at transform:
-            
+        zoom 0.8  
 
     vbox:
         style "main_menu_vbox"
@@ -761,54 +768,54 @@ screen preferences():
 
             null height (4 * gui.pref_spacing)
 
-            hbox:
-                style_prefix "slider"
-                box_wrap True
+            # hbox:
+            #     style_prefix "slider"
+            #     box_wrap True
 
-                vbox:
+            #     vbox:
 
-                    label _("Скорость текста")
+            #         label _("Скорость текста")
 
-                    bar value Preference("text speed")
+            #         bar value Preference("text speed")
 
-                    label _("Скорость авточтения")
+            #         label _("Скорость авточтения")
 
-                    bar value Preference("auto-forward time")
+            #         bar value Preference("auto-forward time")
 
-                vbox:
+            #     vbox:
 
-                    if config.has_music:
-                        label _("Громкость музыки")
+            #         if config.has_music:
+            #             label _("Громкость музыки")
 
-                        hbox:
-                            bar value Preference("music volume")
+            #             hbox:
+            #                 bar value Preference("music volume")
 
-                    if config.has_sound:
+            #         if config.has_sound:
 
-                        label _("Громкость звуков")
+            #             label _("Громкость звуков")
 
-                        hbox:
-                            bar value Preference("sound volume")
+            #             hbox:
+            #                 bar value Preference("sound volume")
 
-                            if config.sample_sound:
-                                textbutton _("Тест") action Play("sound", config.sample_sound)
+            #                 if config.sample_sound:
+            #                     textbutton _("Тест") action Play("sound", config.sample_sound)
 
 
-                    if config.has_voice:
-                        label _("Громкость голоса")
+            #         if config.has_voice:
+            #             label _("Громкость голоса")
 
-                        hbox:
-                            bar value Preference("voice volume")
+            #             hbox:
+            #                 bar value Preference("voice volume")
 
-                            if config.sample_voice:
-                                textbutton _("Тест") action Play("voice", config.sample_voice)
+            #                 if config.sample_voice:
+            #                     textbutton _("Тест") action Play("voice", config.sample_voice)
 
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
+            #         if config.has_music or config.has_sound or config.has_voice:
+            #             null height gui.pref_spacing
 
-                        textbutton _("Без звука"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+            #             textbutton _("Без звука"):
+            #                 action Preference("all mute", "toggle")
+            #                 style "mute_all_button"
 
 
 style pref_label is gui_label
