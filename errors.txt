@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/mini-game.rpy", line 53: 'zonder' is not a keyword argument or valid child of the screen statement.
-    zonder
-          ^
+File "game/screens.rpy", line 375: ATL block expects a non-empty block.
+    at transform:
+                 ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Wed Nov  8 21:42:39 2023
+Mon Nov 13 17:11:43 2023

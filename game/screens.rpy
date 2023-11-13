@@ -105,9 +105,12 @@ screen say(who, what):
             window:
                 id "namebox"
                 style "namebox"
-                text who id "who"
+                text who id "who":
+                    slow_cps 20
 
-        text what id "what"
+        text what id "what":
+            slow_cps 20
+            slow_cps_multiplier 2
 
 
     ## Если есть боковое изображение ("голова"), показывает её поверх текста.
@@ -136,7 +139,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/My/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -243,20 +246,22 @@ screen quick_menu():
 
     if quick_menu:
 
-        hbox:
+        grid 7 1:
             style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
+            xalign 0.65
+            yalign 0.745
+            spacing 7
+            
 
-            textbutton _("Назад") action Rollback()
-            textbutton _("История") action ShowMenu('history')
-            textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Авто") action Preference("auto-forward", "toggle")
-            textbutton _("Сохранить") action ShowMenu('save')
-            textbutton _("Б.Сохр") action QuickSave()
-            textbutton _("Б.Загр") action QuickLoad()
-            textbutton _("Опции") action ShowMenu('preferences')
+            textbutton _("Назад") xalign 0.5 action Rollback()
+            textbutton _("История") xalign 0.5 action ShowMenu('history')
+            # textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Авто") xalign 0.5 action Preference("auto-forward", "toggle")
+            textbutton _("Сохранить") xalign 0.5 action ShowMenu('save')
+            textbutton _("Б.Сохр" ) xalign 0.5 action QuickSave()
+            textbutton _("Б.Загр") xalign 0.5 action QuickLoad()
+            textbutton _("Опции") xalign 0.5 action ShowMenu('preferences')
 
 
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
@@ -364,16 +369,21 @@ screen main_menu():
     ## содержание главного меню находится на экране навигации.
     use navigation
 
-    if gui.show_name:
+    add "gui/My/logo.png":
+        xalign 0.5
+        zoom 0.8
+        at transform:
+            
 
-        vbox:
-            style "main_menu_vbox"
+    vbox:
+        style "main_menu_vbox"
 
+        if gui.show_name:
             text "[config.name!t]":
                 style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+        text "[config.version]":
+            style "main_menu_version"
 
 
 style main_menu_frame is empty

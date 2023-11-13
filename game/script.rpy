@@ -10,6 +10,7 @@ define e = Character('Эйлин', color="#c8ffc8")
 
 # Игра начинается здесь:
 label start:
-    call screen countdown
+    
+    e 'aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba '
 
     return

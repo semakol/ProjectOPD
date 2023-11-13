@@ -1,8 +1,8 @@
 
 init python:
     import random
-    d = "aacv aacy aada aadc aade aadi aads aadt aadu aaea aaec aaem aaen aaep aaes aaev aafa aafb aafc aafd aaff aafi aafl aage aagh aaha aahk aahl aahs aahz aaib aaic aaii aain aais aaka aake aaku aala aalc aald aale aali aall aalo aals aalu aama aamb aamc aamd aame aami aamn aamo aamp aamr aams aana aand aane aang aani aanp aaoe aaon aaoo aaow aapa aapc aaph aapi aapl aapm aapo aaps aapt aara aarc aard aare aari aarm aaro aarp aars aart aaru aasa aasc aasd aase aasf aasi aasm aass aast aasu aata aatc aatf aatk aatt aatw aaup aaus aauw aava aawt aaww ab's abaa abab abac abad abae abaf abag abai abaj abak abal abam aban abap abar abas abat abau abaw abax abay abb- abb. abba abbb abbe abbi abbo abbr abbs abbt abby abca abcb abcc abcd abcf abch abci abcl abcn abcp abcr abcs abct abcw abd. abda abdi abdo abdu abdy abec abed abee abel aben aber abes abet abey abez abff abgd abgl abha abhi abhm abho abhr abhs abia abib abic abid abie abig abil abim abin abir abis abit abiu abiy abjs abl. abla able ablj ablo abls ablv ably abma abmb abmc abms abmt abnu aboa abob abod abof aboh abok abol abon aboo abor abos abot abou abov abow abox aboy abp. abpa abpc abpd abpi abpm abpn abpp abpr abps abr. abra abrc abri abro abrs abry abs- abs. absa absd abse absf absi absl absp abss absu absw abt. abta abts abtu abua abud abue abuf abug abuk abul abum abun abus abut abuy abv. abva abvd".upper().split()
-    splitChars = ';:./,"@#$%^&*~(<\\'
+    d = "aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba aboba".upper().split()
+    splitChars = ';:./,"@#$%^&*~\\(<'
     d2 = d.copy()
     random.shuffle(d2)
     height = 20
@@ -13,7 +13,8 @@ init python:
     for y in range(height):
         k = 0
         while k < width:
-            if random.randint(1, 5) == 1 and flag:
+            rand = random.randint(1, 30)
+            if rand in range(1, 5) and flag:
                 ind += 1
                 but = d2[ind]
                 if (k + len(but) <= width):
@@ -25,8 +26,15 @@ init python:
                     flag = False
                     break
                 else:
-                    ind1 = random.randint(0, len(splitChars)-1)
+                    ind1 = random.randint(0, len(splitChars)-3)
                     listOfButtons[y].append([splitChars[ind1], -ind1-1])
+                    flag = True
+            elif rand in (5, 7) and flag:
+                if rand == 5:
+                    listOfButtons[y].append(['<', -(len(splitChars)-1)-1])
+                    flag = True
+                if rand == 6:
+                    listOfButtons[y].append(['(', -(len(splitChars)-2)-1])
                     flag = True
             else:
                 ind1 = random.randint(0, len(splitChars)-1)
@@ -125,8 +133,8 @@ screen countdown(hov1 = -100):
                                 else:
                                     action Notify(splitChars[abs(t[1])-1])
                             align (0.5, 0.5)
-                            hovered Show("co", hov = t[1])
-                            unhovered Show("co", hov = -100)
+                            hovered [Show("co", hov = t[1])]
+                            unhovered [Show("co", hov = -100)]
                             xpadding 0
                             top_padding 5
                             bottom_padding 0
