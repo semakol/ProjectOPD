@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 36, in script
-    i 'ads'
-Exception: Sayer 'i' is not defined.
+  File "game/script.rpy", line 125, in script
+    I 'Ну вот, файл расшифрован на 80%. Дальше справится система.'
+ValueError: unsupported format character ' ' (0x20) at index 32
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 36, in script
-    i 'ads'
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 890, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 783, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'i' is not defined.
+  File "game/script.rpy", line 125, in script
+    I 'Ну вот, файл расшифрован на 80%. Дальше справится система.'
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 930, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 1463, in say
+    what = what % tag_quoting_dict
+ValueError: unsupported format character ' ' (0x20) at index 32
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
-ProjectOPD 1.0
-Mon Nov 13 20:14:46 2023
+ProjectOPD 0.1-EARLY-ALPHA
+Mon Nov 20 17:05:29 2023

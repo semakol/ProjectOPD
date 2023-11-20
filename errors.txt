@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 31: expected statement.
-    D show
-      ^
+File "game/script.rpy", line 247: if statement expects a non-empty block.
+    if rascazal:
+                ^
+
+File "game/script.rpy", line 251: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Mon Nov 13 20:53:40 2023
+Mon Nov 20 17:41:34 2023
