@@ -16,10 +16,12 @@ init python:
             self.word = random.choice(self.words)
             self.words.remove(self.word)
             self.game_win = False
+            
         def DoList(self):
             listOfButtons, ind, id = DoButtons(self.height, self.width, self.d2, self.splitChars, 0, 1)
             listOfButtons2, ind, id = DoButtons(self.height, self.width, self.d2, self.splitChars, ind, id)
             return listOfButtons, listOfButtons2
+
         def DoListSing(self):
             sing = random.randint(4096,65000)
             listSing1 = []
@@ -31,6 +33,7 @@ init python:
                 listSing2.append(hex(sing))
                 sing += 1
             return listSing1, listSing2
+
         def GetWords(self):
             words = []
             for d in self.listOfButtons1 + self.listOfButtons2:
@@ -38,6 +41,7 @@ init python:
                     if h[1] >= 0:
                         words.append((h[0],h[2]))
             return words
+        
         def ClickCheck(self, id2):
             if id2 != -1000:
                 flagre = False

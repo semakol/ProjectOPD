@@ -60,13 +60,29 @@ init python:
 define darker = Solid("72619c")
 define brighter = Solid("c6bfd7")
 define white = Solid("#fff")
-define mini_game_win = False
 
 define font_hack = "consolas.ttf"
 
-style button:
+style mini_game_frame:
+    xpadding 20
+    ypadding 20
+
+style mini_game_button:
     background "#000000"
     hover_background "#04408f"
+    align (0.5, 0.5)
+    xpadding 0
+    top_padding 5
+    bottom_padding 0
+
+style mini_game_text:
+    antialias True
+    font font_hack
+    justify True
+    size 32
+    color "08a"
+    align (0.5, 0.5)
+
 
 screen click(id2, game):
     timer 0.00001 action [Show('miniGame', id2 = id2, game = game), Hide('click')]
@@ -82,21 +98,17 @@ screen miniGame(id2 = -1000, game = HakingGame()):
         timer 0.00001 action [Return(value = False)]
     add 'miniFon.jpg'
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 0.0
         yalign 0.0
         background "black"
         hbox:
             for i in range(game.hp):
                 text 'H':
-                    antialias True
-                    justify True
+                    style style.mini_game_text
                     size 60
-                    color "08a"
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 0.3
         yalign 0.5
 
@@ -105,28 +117,17 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                 hbox:
                     for t in i:
                         button:
-                            style style.button
+                            style style.mini_game_button
                             if (t[1] == -99):
                                 action Show("click", id2=t[2], game = game)
                             elif (t[1] >= 0):
                                 action Show("click", id2=t[2], game = game)
                             else:
                                 action NullAction()
-                            align (0.5, 0.5)
-                            xpadding 0
-                            top_padding 5
-                            bottom_padding 0
-
                             text t[0]:
-                                antialias True
-                                font font_hack
-                                justify True
-                                size 32
-                                color "08a"
-                                align (0.5, 0.5)
+                                style style.mini_game_text
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 0.7
         yalign 0.5
 
@@ -135,79 +136,46 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                 hbox:
                     for t in i:
                         button:
-                            style style.button
+                            style style.mini_game_button
                             if (t[1] == -99):
                                 action Show("click", id2=t[2], game = game)
                             elif (t[1] >= 0):
                                 action Show("click", id2=t[2], game = game)
                             else:
                                 action NullAction()
-                            align (0.5, 0.5)
-                            xpadding 0
-                            top_padding 5
-                            bottom_padding 0
-
                             text t[0]:
-                                antialias True
-                                font font_hack
-                                justify True
-                                size 32
-                                color "08a"
-                                align (0.5, 0.5)
+                                style style.mini_game_text
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 1.0
         yalign 1.0
         vbox:
             for i in game.logList:
                 text i:
-                    antialias True
-                    font font_hack
-                    justify True
-                    size 32
-                    color "08a"
+                    style style.mini_game_text
+                    align (0.0, 0.0)
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 0.19
         yalign 0.5
         vbox:
             for i in game.listSing1:
                 button:
-                    align (0.5, 0.5)
-                    xpadding 0
-                    top_padding 5
-                    bottom_padding 0
-
+                    style style.mini_game_button
                     text i:
-                        antialias True
-                        font font_hack
-                        justify True
-                        size 32
-                        color "08a"
-                        align (0.5, 0.5)
+                        style style.mini_game_text
     
     frame:
-        xpadding 20
-        ypadding 20
+        style style.mini_game_frame
         xalign 0.55
         yalign 0.5
         vbox:
             for i in game.listSing2:
                 button:
-                    align (0.5, 0.5)
-                    xpadding 0
-                    top_padding 5
-                    bottom_padding 0
-
+                    style style.mini_game_button
+                    action NullAction()
                     text i:
-                        antialias True
-                        font font_hack
-                        justify True
-                        size 32
-                        color "08a"
-                        align (0.5, 0.5)
+                        style style.mini_game_text
    
     
 
