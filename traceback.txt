@@ -5,19 +5,31 @@ While running game code:
     call screen miniGame(game = miniGame1)
   File "renpy/common/000statements.rpy", line 670, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/mini-game.rpy", line 75, in execute
+  File "game/mini-game.rpy", line 91, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 75, in execute
+  File "game/mini-game.rpy", line 91, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 97, in execute
+  File "game/mini-game.rpy", line 110, in execute
     frame:
-  File "game/mini-game.rpy", line 103, in execute
+  File "game/mini-game.rpy", line 115, in execute
     vbox:
-  File "game/mini-game.rpy", line 104, in execute
-    for i in game.listOfButtons:
-  File "game/mini-game.rpy", line 104, in <module>
-    for i in game.listOfButtons:
-AttributeError: 'HakingGame' object has no attribute 'listOfButtons'
+  File "game/mini-game.rpy", line 116, in execute
+    for i in game.listOfButtons1:
+  File "game/mini-game.rpy", line 117, in execute
+    hbox:
+  File "game/mini-game.rpy", line 118, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 119, in execute
+    button:
+  File "game/mini-game.rpy", line 119, in keywords
+    button:
+  File "game/mini-game.rpy", line 121, in keywords
+    if (t[1] == -99) or (t[1] >= 0):
+  File "game/mini-game.rpy", line 121, in keywords
+    if (t[1] == -99) or (t[1] >= 0):
+  File "game/mini-game.rpy", line 123, in <module>
+    hovered Notyfy(t[0])
+NameError: name 'Notyfy' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -54,21 +66,33 @@ Full traceback:
     self.update()
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
     self.screen.function(**self.scope)
-  File "game/mini-game.rpy", line 75, in execute
+  File "game/mini-game.rpy", line 91, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 75, in execute
+  File "game/mini-game.rpy", line 91, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 97, in execute
+  File "game/mini-game.rpy", line 110, in execute
     frame:
-  File "game/mini-game.rpy", line 103, in execute
+  File "game/mini-game.rpy", line 115, in execute
     vbox:
-  File "game/mini-game.rpy", line 104, in execute
-    for i in game.listOfButtons:
-  File "game/mini-game.rpy", line 104, in <module>
-    for i in game.listOfButtons:
-AttributeError: 'HakingGame' object has no attribute 'listOfButtons'
+  File "game/mini-game.rpy", line 116, in execute
+    for i in game.listOfButtons1:
+  File "game/mini-game.rpy", line 117, in execute
+    hbox:
+  File "game/mini-game.rpy", line 118, in execute
+    for t in i:
+  File "game/mini-game.rpy", line 119, in execute
+    button:
+  File "game/mini-game.rpy", line 119, in keywords
+    button:
+  File "game/mini-game.rpy", line 121, in keywords
+    if (t[1] == -99) or (t[1] >= 0):
+  File "game/mini-game.rpy", line 121, in keywords
+    if (t[1] == -99) or (t[1] >= 0):
+  File "game/mini-game.rpy", line 123, in <module>
+    hovered Notyfy(t[0])
+NameError: name 'Notyfy' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
-ProjectOPD 0.2-EARLY-ALPHA
-Sat Nov 25 17:45:56 2023
+ProjectOPD 0.2-EARLY-BETA
+Sat Nov 25 18:28:16 2023

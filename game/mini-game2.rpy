@@ -1,7 +1,7 @@
 
 init python:
     class HakingGame():
-        def __init__(self):
+        def __init__(self, time = 100):
             self.hp = 5
             self.splitChars = ';:./,"@#$%!-+^&*~\\(<'
             self.height = 20
@@ -16,6 +16,8 @@ init python:
             self.word = random.choice(self.words)
             self.words.remove(self.word)
             self.game_win = False
+            self.timer = False
+            self.time = time
             
         def DoList(self):
             listOfButtons, ind, id = DoButtons(self.height, self.width, self.d2, self.splitChars, 0, 1)
@@ -41,7 +43,7 @@ init python:
                     if h[1] >= 0:
                         words.append((h[0],h[2]))
             return words
-        
+
         def ClickCheck(self, id2):
             if id2 != -1000:
                 flagre = False

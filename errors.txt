@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/mini-game2.rpy", line 43: expected an indented block
-            self.flagre = False
-             ^
+File "game/script.rpy", line 24: expected statement.
+    & miniGame1.timer = True
+                      ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Sat Nov 25 17:40:29 2023
+Sat Nov 25 19:24:39 2023

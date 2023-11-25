@@ -60,7 +60,7 @@ init python:
 define darker = Solid("72619c")
 define brighter = Solid("c6bfd7")
 define white = Solid("#fff")
-
+define time_out = False
 define font_hack = "consolas.ttf"
 
 style mini_game_frame:
@@ -83,6 +83,37 @@ style mini_game_text:
     color "08a"
     align (0.5, 0.5)
 
+screen print(text1):
+    zorder 100
+
+    frame:
+        style style.mini_game_frame
+        xalign 1.0
+        yalign 1.0
+        xsize 0.2
+        hbox:
+            text '> ':
+                style style.mini_game_text
+                align (0.0, 0.0)
+            text text1:
+                style style.mini_game_text
+                align (0.0, 0.0)
+                slow_cps 50
+
+screen game_timer(time):
+    zorder 100
+
+    if time < 1:
+        timer 1 action [SetVariable('time_out', True), Hide('game_timer')]
+    frame:
+        style style.mini_game_frame
+        xalign 1.0
+        yalign 0.0  
+        background "black"
+        text hex(time)[2:].upper():
+            style style.mini_game_text
+            size 60
+    timer 1 action [Hide('game_timer'),Show("game_timer", time = time - 1)]
 
 screen click(id2, game):
     timer 0.00001 action [Show('miniGame', id2 = id2, game = game), Hide('click')]
@@ -90,12 +121,15 @@ screen click(id2, game):
 
 screen miniGame(id2 = -1000, game = HakingGame()):
     $ game.ClickCheck(id2 = id2)
+    if not(game.timer):
+        timer 0.00001 action [Show('game_timer', time = game.time)]
+        $ game.timer = True
     tag menu
     zorder 100
     if game.game_win:
-        timer 0.00001 action [Return(value = True)]
-    if game.hp == 0:
-        timer 0.00001 action [Return(value = False)]
+        timer 0.00001 action [Return(value = True), Hide('print'), Hide('game_timer')]
+    if game.hp == 0 or time_out:
+        timer 0.00001 action [Return(value = False), Hide('print'), Hide('game_timer')]
     add 'miniFon.jpg'
     frame:
         style style.mini_game_frame
@@ -118,12 +152,12 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                     for t in i:
                         button:
                             style style.mini_game_button
-                            if (t[1] == -99):
-                                action Show("click", id2=t[2], game = game)
-                            elif (t[1] >= 0):
+                            if (t[1] == -99) or (t[1] >= 0):
                                 action Show("click", id2=t[2], game = game)
                             else:
                                 action NullAction()
+                            hovered Show('print', text1 = t[0])
+                            unhovered Hide('print')
                             text t[0]:
                                 style style.mini_game_text
     frame:
@@ -137,18 +171,21 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                     for t in i:
                         button:
                             style style.mini_game_button
-                            if (t[1] == -99):
-                                action Show("click", id2=t[2], game = game)
-                            elif (t[1] >= 0):
+                            if (t[1] == -99) or (t[1] >= 0):
                                 action Show("click", id2=t[2], game = game)
                             else:
                                 action NullAction()
+                            hovered Show('print', text1 = t[0])
+                            unhovered Hide('print')
                             text t[0]:
                                 style style.mini_game_text
     frame:
         style style.mini_game_frame
+        yanchor 1.0
         xalign 1.0
-        yalign 1.0
+        xsize 0.2
+        ypos 0.94
+        
         vbox:
             for i in game.logList:
                 text i:
