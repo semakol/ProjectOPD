@@ -17,6 +17,22 @@ $ rascazal = False
 
 # Игра начинается здесь:
 label start:
+
+    'Погнали'
+
+    $ miniGame1 = HakingGame()
+
+    call screen miniGame(game = miniGame1)
+
+    if _return:
+        'Победа'
+    else:
+        'Проигрыш'
+
+    return
+
+
+label start1:
     
     scene kyberlock:
         align (0.5, 0.5)

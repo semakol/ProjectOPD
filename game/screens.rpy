@@ -251,7 +251,7 @@ style choice_button_text is default:
 screen quick_menu():
 
     ## Гарантирует, что оно появляется поверх других экранов.
-    zorder 100
+    zorder 80
 
     if quick_menu:
 
