@@ -1,40 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 25, in script
+  File "game/script.rpy", line 24, in script
     call screen miniGame(game = miniGame1)
   File "renpy/common/000statements.rpy", line 670, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/mini-game.rpy", line 91, in execute
+  File "game/mini-game.rpy", line 130, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 91, in execute
+  File "game/mini-game.rpy", line 130, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 110, in execute
-    frame:
-  File "game/mini-game.rpy", line 115, in execute
-    vbox:
-  File "game/mini-game.rpy", line 116, in execute
-    for i in game.listOfButtons1:
-  File "game/mini-game.rpy", line 117, in execute
-    hbox:
-  File "game/mini-game.rpy", line 118, in execute
-    for t in i:
-  File "game/mini-game.rpy", line 119, in execute
-    button:
-  File "game/mini-game.rpy", line 119, in keywords
-    button:
-  File "game/mini-game.rpy", line 121, in keywords
-    if (t[1] == -99) or (t[1] >= 0):
-  File "game/mini-game.rpy", line 121, in keywords
-    if (t[1] == -99) or (t[1] >= 0):
-  File "game/mini-game.rpy", line 123, in <module>
-    hovered Notyfy(t[0])
-NameError: name 'Notyfy' is not defined
+  File "game/mini-game.rpy", line 131, in execute
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game.rpy", line 131, in <module>
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game2.rpy", line 80, in ClickCheck
+    self.LogAdd('> '+h[0] + ' ' + str(check(h[0], self.word[0])))
+  File "game/mini-game2.rpy", line 49, in LogAdd
+    if self.logList > 8:
+TypeError: '>' not supported between instances of 'RevertableList' and 'int'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 25, in script
+  File "game/script.rpy", line 24, in script
     call screen miniGame(game = miniGame1)
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
     self.call("execute")
@@ -58,6 +46,7 @@ Full traceback:
     d.visit_all(callback, seen)
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
     d.visit_all(callback, seen)
+  [Previous line repeated 1 more time]
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
     callback(self)
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
@@ -66,33 +55,21 @@ Full traceback:
     self.update()
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
     self.screen.function(**self.scope)
-  File "game/mini-game.rpy", line 91, in execute
+  File "game/mini-game.rpy", line 130, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 91, in execute
+  File "game/mini-game.rpy", line 130, in execute
     screen miniGame(id2 = -1000, game = HakingGame()):
-  File "game/mini-game.rpy", line 110, in execute
-    frame:
-  File "game/mini-game.rpy", line 115, in execute
-    vbox:
-  File "game/mini-game.rpy", line 116, in execute
-    for i in game.listOfButtons1:
-  File "game/mini-game.rpy", line 117, in execute
-    hbox:
-  File "game/mini-game.rpy", line 118, in execute
-    for t in i:
-  File "game/mini-game.rpy", line 119, in execute
-    button:
-  File "game/mini-game.rpy", line 119, in keywords
-    button:
-  File "game/mini-game.rpy", line 121, in keywords
-    if (t[1] == -99) or (t[1] >= 0):
-  File "game/mini-game.rpy", line 121, in keywords
-    if (t[1] == -99) or (t[1] >= 0):
-  File "game/mini-game.rpy", line 123, in <module>
-    hovered Notyfy(t[0])
-NameError: name 'Notyfy' is not defined
+  File "game/mini-game.rpy", line 131, in execute
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game.rpy", line 131, in <module>
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game2.rpy", line 80, in ClickCheck
+    self.LogAdd('> '+h[0] + ' ' + str(check(h[0], self.word[0])))
+  File "game/mini-game2.rpy", line 49, in LogAdd
+    if self.logList > 8:
+TypeError: '>' not supported between instances of 'RevertableList' and 'int'
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
 ProjectOPD 0.2-EARLY-BETA
-Sat Nov 25 18:28:16 2023
+Mon Nov 27 20:00:55 2023

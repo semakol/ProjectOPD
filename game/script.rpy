@@ -21,8 +21,8 @@ label start:
     'Погнали'
 
     $ miniGame1 = HakingGame(100)
-    $ miniGame1.timer = True
     call screen miniGame(game = miniGame1)
+    $ miniGame1 = None
 
     if _return:
         'Победа'

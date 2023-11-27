@@ -44,6 +44,11 @@ init python:
                         words.append((h[0],h[2]))
             return words
 
+        def LogAdd(self, text):
+            self.logList.append(text)
+            if len(self.logList) > 8:
+                self.logList.pop(0)
+
         def ClickCheck(self, id2):
             if id2 != -1000:
                 flagre = False
@@ -51,12 +56,12 @@ init python:
                     for h in d:
                         if h[2] == id2:
                             if h[0] == self.word[0]:
-                                self.logList.append('> '+'Победа')
+                                self.LogAdd('> '+'Победа')
                                 self.game_win = True
                             elif h[1] == -99:
                                 if random.randint(1,5) == 1:
                                     self.hp = 5
-                                    self.logList.append('> '+'Попытки востановлены')
+                                    self.LogAdd('> '+'Попытки востановлены')
                                 else:
                                     if len(self.words) != 0:
                                         f = random.choice(self.words)
@@ -66,13 +71,13 @@ init python:
                                                 if c2[2] == f[1]:
                                                     c2[0] = '.' * len(c2[0])
                                                     c2[1] = -1
-                                        self.logList.append('> '+'Обманка убрана')
+                                        self.LogAdd('> '+'Обманка убрана')
                                 h[1] = -1
                                 h[0] = '.' * len(h[0]) 
                             elif h[1] == -1:
                                 pass
                             elif h[1] != -1:
-                                self.logList.append('> '+h[0] + ' ' + str(check(h[0], self.word[0])))
+                                self.LogAdd('> '+h[0] + ' ' + str(check(h[0], self.word[0])))
                                 for l in range(len(self.words)):
                                     if self.words[l][0] == h[0]:
                                         self.words.pop(l)

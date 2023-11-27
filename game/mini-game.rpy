@@ -1,7 +1,43 @@
 
+style mini_game_frame:
+    background None
+    xpadding 20
+    ypadding 20
+
+style mini_game_frame_console:
+    background None
+    xpadding 5
+    ypadding 5
+
+style mini_game_button:
+    background None
+    hover_background "#04408f"
+    align (0.5, 0.5)
+    xpadding 0
+    top_padding 5
+    bottom_padding 0
+
+style mini_game_text:
+    background None
+    antialias True
+    font font_hack
+    justify True
+    size 32
+    color "08a"
+    align (0.5, 0.5)
+
+define darker = Solid("72619c")
+define brighter = Solid("c6bfd7")
+define white = Solid("#fff")
+define time_out = False
+define font_hack = "consolas.ttf"
+
 init python:
 
     import random
+
+    def PrinText(st, at):
+        return Text(prtext, slow = 50, color = "08a"), .2
 
     def DoButtons(height, width, d2, splitChars, ind, id):
         listOfButtons = [[] for i in range(height)]
@@ -57,40 +93,13 @@ init python:
                 repeated += 1
         return repeated
 
-define darker = Solid("72619c")
-define brighter = Solid("c6bfd7")
-define white = Solid("#fff")
-define time_out = False
-define font_hack = "consolas.ttf"
-
-style mini_game_frame:
-    xpadding 20
-    ypadding 20
-
-style mini_game_button:
-    background "#000000"
-    hover_background "#04408f"
-    align (0.5, 0.5)
-    xpadding 0
-    top_padding 5
-    bottom_padding 0
-
-style mini_game_text:
-    antialias True
-    font font_hack
-    justify True
-    size 32
-    color "08a"
-    align (0.5, 0.5)
-
 screen print(text1):
     zorder 100
 
     frame:
-        style style.mini_game_frame
-        xalign 1.0
-        yalign 1.0
-        xsize 0.2
+        style style.mini_game_frame_console
+        pos (1564, 946)
+        xysize (280, 40)
         hbox:
             text '> ':
                 style style.mini_game_text
@@ -98,7 +107,7 @@ screen print(text1):
             text text1:
                 style style.mini_game_text
                 align (0.0, 0.0)
-                slow_cps 50
+                slow_cps 30
 
 screen game_timer(time):
     zorder 100
@@ -107,12 +116,11 @@ screen game_timer(time):
         timer 1 action [SetVariable('time_out', True), Hide('game_timer')]
     frame:
         style style.mini_game_frame
-        xalign 1.0
-        yalign 0.0  
-        background "black"
+        pos (1562, 83)
+        xysize (242, 144)
         text hex(time)[2:].upper():
             style style.mini_game_text
-            size 60
+            size 100
     timer 1 action [Hide('game_timer'),Show("game_timer", time = time - 1)]
 
 screen click(id2, game):
@@ -121,6 +129,7 @@ screen click(id2, game):
 
 screen miniGame(id2 = -1000, game = HakingGame()):
     $ game.ClickCheck(id2 = id2)
+    $ text2 = ''
     if not(game.timer):
         timer 0.00001 action [Show('game_timer', time = game.time)]
         $ game.timer = True
@@ -131,22 +140,25 @@ screen miniGame(id2 = -1000, game = HakingGame()):
     if game.hp == 0 or time_out:
         timer 0.00001 action [Return(value = False), Hide('print'), Hide('game_timer')]
     add 'miniFon.jpg'
+    add 'mini_game_mon.png'
     frame:
         style style.mini_game_frame
-        xalign 0.0
-        yalign 0.0
-        background "black"
-        hbox:
+        pos (98, 69)
+        xysize (130, 400)
+        vbox:
+            spacing 15
+            align (0.5, 0.5)
             for i in range(game.hp):
                 text 'H':
                     style style.mini_game_text
-                    size 60
+                    size 62
     frame:
         style style.mini_game_frame
-        xalign 0.3
-        yalign 0.5
+        pos (493, 146)
+        xysize (360, 800)
 
         vbox:
+            align (0.5, 0.5)
             for i in game.listOfButtons1:
                 hbox:
                     for t in i:
@@ -162,10 +174,11 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                                 style style.mini_game_text
     frame:
         style style.mini_game_frame
-        xalign 0.7
-        yalign 0.5
+        pos (1073, 146)
+        xysize (360, 800)
 
         vbox:
+            align (0.5, 0.5)
             for i in game.listOfButtons2:
                 hbox:
                     for t in i:
@@ -180,33 +193,35 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                             text t[0]:
                                 style style.mini_game_text
     frame:
-        style style.mini_game_frame
-        yanchor 1.0
-        xalign 1.0
-        xsize 0.2
-        ypos 0.94
+        style style.mini_game_frame_console
+        pos (1564, 388)
+        xysize (280, 558)
         
         vbox:
+            yalign 1.0
             for i in game.logList:
                 text i:
                     style style.mini_game_text
-                    align (0.0, 0.0)
+                    align (0.0, 1.0)
     frame:
         style style.mini_game_frame
-        xalign 0.19
-        yalign 0.5
+        pos (353, 146)
+        xysize (140, 800)
         vbox:
+            align (0.5, 0.5)
             for i in game.listSing1:
                 button:
                     style style.mini_game_button
+                    action NullAction()
                     text i:
                         style style.mini_game_text
     
     frame:
         style style.mini_game_frame
-        xalign 0.55
-        yalign 0.5
+        pos (933, 146)
+        xysize (140, 800)
         vbox:
+            align (0.5, 0.5)
             for i in game.listSing2:
                 button:
                     style style.mini_game_button
