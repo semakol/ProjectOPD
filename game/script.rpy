@@ -20,7 +20,7 @@ label start:
 
     'Погнали'
 
-    $ miniGame1 = HakingGame(100)
+    $ miniGame1 = HakingGame(100, 8)
     call screen miniGame(game = miniGame1)
     $ miniGame1 = None
 

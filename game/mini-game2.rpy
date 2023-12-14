@@ -1,13 +1,13 @@
 
 init python:
     class HakingGame():
-        def __init__(self, time = 100):
+        def __init__(self, time = 100, num = 6):
             self.hp = 5
             self.splitChars = ';:./,"@#$%!-+^&*~\\(<'
             self.height = 20
             self.width = 16
             self.logList = []
-            self.d = 'saaransh saarathi saarbahn saarburg saaremaa saarinen saaristo saarland saarrthi saas-fee saaskula saasveld saathire saathiya saatkamp saavedra sabaayad sababurg sabadell sabadine sabadini sabaeans sabaeism sabalito sabalote sabalpur sabandan sabaneta sabantuy sabaoani sabareni sabariya sabarros sabatham sabatier sabatine sabatini sabatino sabatons sabaudia sabazios sabbarin sabbaths sabbatia sabbatic sabbaton sabbical sabburah sabeline sabellae sabellic sabellid sabercat sabering saberleg sabersaw sabethes sabieite sabinada sabinane sabinene sabinian sabiroba sabitzer sablayan sableize sabliere sabljari saboeiro saboraic saborios saborsko sabotage saboteur sabotier sabounee sabourin sabraogo sabratha sabrecat sabredav sabrejet sabreman sabrenet sabreurs sabreuse sabrinus sabritas sabrosky sabtenga sabucina sabudana sabuline sabulite sabulose sabulous sabunchi saburral sabzabad sabzawar sabzazar sabzevar sabzewar sabzvari sac-back sacabaya sacacoyo sacajewa sacalait sacaline sacaseni sacatons sacavemt sacbrood saccaded saccades saccadic saccardo saccated saccaton sacchar- sacchari hailfrom hailhail hailhale haililie hailings haillely haillike hailmary hailsham hailshot hailuoto haimhald hainbach hainberg hainburg hainfeld hainford haingura hainisch hainrode hainteny hainting haiphong hair-gel hair-lip hair-pin hairatan hairaway hairball hairband hairbell hairbird hairbows haircalf haircare haircell hairclip haircomb haircut1 haircuts hairdome hairdyes hairenik hairgate hairgels hairgrip hairiest hairkutt hairlace hairless hairlike hairline hairloss hairnets hairough hairpick hairpins hairseal hairsets hairslip hairston'.upper().split()
+            self.d = self.GetWordsFile(num)
             self.d2 = self.d.copy()
             random.shuffle(self.d2)
             self.listOfButtons1, self.listOfButtons2 = self.DoList()
@@ -18,7 +18,11 @@ init python:
             self.game_win = False
             self.timer = False
             self.time = time
-            
+        
+        def GetWordsFile(self, num):
+            f = [i.replace('\n', '').upper() for i in open(os.path.join( renpy.config.gamedir, f"New{num}.txt"))]
+            return f
+
         def DoList(self):
             listOfButtons, ind, id = DoButtons(self.height, self.width, self.d2, self.splitChars, 0, 1)
             listOfButtons2, ind, id = DoButtons(self.height, self.width, self.d2, self.splitChars, ind, id)
