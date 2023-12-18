@@ -1,7 +1,7 @@
 
 init python:
     class HakingGame():
-        def __init__(self, time = 100, num = 6):
+        def __init__(self, time = 100, num = 6, timer = False):
             self.hp = 5
             self.splitChars = ';:./,"@#$%!-+^&*~\\(<'
             self.height = 20
@@ -16,7 +16,7 @@ init python:
             self.word = random.choice(self.words)
             self.words.remove(self.word)
             self.game_win = False
-            self.timer = False
+            self.timer = timer
             self.time = time
         
         def GetWordsFile(self, num):
@@ -60,7 +60,7 @@ init python:
                     for h in d:
                         if h[2] == id2:
                             if h[0] == self.word[0]:
-                                self.LogAdd('> '+'Победа')
+                                self.LogAdd('> '+'Доступ разрешён')
                                 self.game_win = True
                             elif h[1] == -99:
                                 if random.randint(1,5) == 1:
@@ -89,6 +89,8 @@ init python:
                                 h[0] = '.' * len(h[0])
                                 h[1] = -1
                                 self.hp -= 1
+                                if self.hp < 1:
+                                    self.LogAdd('> '+'Отказано в доступе')
                             flagre = True
                             break
                     if flagre:

@@ -1,30 +1,70 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 23, in script
-    $ miniGame1 = HakingGame(100)
-  File "game/script.rpy", line 23, in <module>
-    $ miniGame1 = HakingGame(100)
-  File "game/mini-game2.rpy", line 11, in __init__
-    self.d2 = self.d.copy()
-AttributeError: 'str' object has no attribute 'copy'
+  File "game/script.rpy", line 26, in script
+    call screen miniGame(game = miniGame1)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/mini-game.rpy", line 154, in execute
+    screen miniGame(id2 = -1000, game = HakingGame()):
+  File "game/mini-game.rpy", line 154, in execute
+    screen miniGame(id2 = -1000, game = HakingGame()):
+  File "game/mini-game.rpy", line 155, in execute
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game.rpy", line 155, in <module>
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game2.rpy", line 92, in ClickCheck
+    if hp < 1:
+NameError: name 'hp' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 23, in script
-    $ miniGame1 = HakingGame(100)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 1138, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\python.py", line 1122, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 23, in <module>
-    $ miniGame1 = HakingGame(100)
-  File "game/mini-game2.rpy", line 11, in __init__
-    self.d2 = self.d.copy()
-AttributeError: 'str' object has no attribute 'copy'
+  File "game/script.rpy", line 26, in script
+    call screen miniGame(game = miniGame1)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 670, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 3347, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
+    self.screen.function(**self.scope)
+  File "game/mini-game.rpy", line 154, in execute
+    screen miniGame(id2 = -1000, game = HakingGame()):
+  File "game/mini-game.rpy", line 154, in execute
+    screen miniGame(id2 = -1000, game = HakingGame()):
+  File "game/mini-game.rpy", line 155, in execute
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game.rpy", line 155, in <module>
+    $ game.ClickCheck(id2 = id2)
+  File "game/mini-game2.rpy", line 92, in ClickCheck
+    if hp < 1:
+NameError: name 'hp' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
 ProjectOPD 0.3-EARLY-BETA
-Thu Dec 14 17:07:19 2023
+Mon Dec 18 23:35:22 2023

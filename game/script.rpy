@@ -18,9 +18,11 @@ $ rascazal = False
 # Игра начинается здесь:
 label start:
 
+    # call screen tutorial
+
     'Погнали'
 
-    $ miniGame1 = HakingGame(100, 8)
+    $ miniGame1 = HakingGame(0, 6, True)
     call screen miniGame(game = miniGame1)
     $ miniGame1 = None
 

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/mini-game.rpy", line 95: 'size' is not a keyword argument or valid child of the frame statement.
-    size (242, 144)
-        ^
+File "game/mini-game.rpy", line 191: the color keyword argument was not given a value.
+    color = "#b90a04"
+          ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Mon Nov 27 18:12:59 2023
+Mon Dec 18 23:34:21 2023

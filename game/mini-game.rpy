@@ -31,6 +31,7 @@ define brighter = Solid("c6bfd7")
 define white = Solid("#fff")
 define time_out = False
 define font_hack = "consolas.ttf"
+define screen_on = True
 
 init python:
 
@@ -95,7 +96,6 @@ init python:
 
 screen print(text1):
     zorder 100
-
     frame:
         style style.mini_game_frame_console
         pos (1564, 946)
@@ -109,6 +109,30 @@ screen print(text1):
                 align (0.0, 0.0)
                 slow_cps 30
 
+screen tutorial():
+    zorder 101
+    add "tutorial.png"
+    frame:
+        style style.mini_game_frame
+        align (1.0, 0.0)
+        button:
+            background "black"
+            hover_background "#04408f"
+            action [Hide('tutorial'), SetVariable('screen_on', True)]
+            text "Закрыть":
+                style style.mini_game_text
+                size 48
+
+screen win():
+    zorder 101
+    add "win.png":
+        align (0.5, 0.5)
+
+screen fin():
+    zorder 101
+    add "fin.png":
+        align (0.5, 0.5)
+                
 screen game_timer(time):
     zorder 100
 
@@ -136,11 +160,22 @@ screen miniGame(id2 = -1000, game = HakingGame()):
     tag menu
     zorder 100
     if game.game_win:
-        timer 0.00001 action [Return(value = True), Hide('print'), Hide('game_timer')]
+        timer 0.00001 action [SetVariable('screen_on', False), Show('win', transition=squares)]
+        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin')]
     if game.hp == 0 or time_out:
-        timer 0.00001 action [Return(value = False), Hide('print'), Hide('game_timer')]
+        timer 0.00001 action [SetVariable('screen_on', False), Show('fin', transition=squares)]
+        timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin')]
     add 'miniFon.jpg'
     add 'mini_game_mon.png'
+    frame:
+        style style.mini_game_frame
+        pos (80, 520)
+        xysize (120, 200)
+        button:
+            style style.mini_game_button
+            action [Show('tutorial'), SetVariable('screen_on', False)]
+            text "Помощь":
+                style style.mini_game_text
     frame:
         style style.mini_game_frame
         pos (98, 69)
@@ -152,6 +187,8 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                 text 'H':
                     style style.mini_game_text
                     size 62
+                    if game.hp == 1:
+                        color "#b90a04"
     frame:
         style style.mini_game_frame
         pos (493, 146)
@@ -164,12 +201,15 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                     for t in i:
                         button:
                             style style.mini_game_button
-                            if (t[1] == -99) or (t[1] >= 0):
-                                action Show("click", id2=t[2], game = game)
-                            else:
-                                action NullAction()
-                            hovered Show('print', text1 = t[0])
-                            unhovered Hide('print')
+                            if screen_on:
+                                if (t[1] == -99) or (t[1] >= 0):
+                                    action Show("click", id2=t[2], game = game)
+                                    activate_sound "audio/effects/keyboard.mp3"
+                                else:
+                                    action NullAction()
+                            hovered [Show('print', text1 = t[0])]
+                            unhovered [Hide('print')]
+                            
                             text t[0]:
                                 style style.mini_game_text
     frame:
@@ -184,12 +224,15 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                     for t in i:
                         button:
                             style style.mini_game_button
-                            if (t[1] == -99) or (t[1] >= 0):
-                                action Show("click", id2=t[2], game = game)
-                            else:
-                                action NullAction()
+                            if screen_on:
+                                if (t[1] == -99) or (t[1] >= 0):
+                                    action Show("click", id2=t[2], game = game)
+                                    activate_sound "audio/effects/keyboard.mp3"
+                                else:
+                                    action NullAction()
                             hovered Show('print', text1 = t[0])
                             unhovered Hide('print')
+
                             text t[0]:
                                 style style.mini_game_text
     frame:
@@ -202,6 +245,10 @@ screen miniGame(id2 = -1000, game = HakingGame()):
             for i in game.logList:
                 text i:
                     style style.mini_game_text
+                    if i == '> Доступ разрешён':
+                        color "#14cf24"
+                    elif i == '> Отказано в доступе':
+                        color "#b90a04"
                     align (0.0, 1.0)
     frame:
         style style.mini_game_frame
