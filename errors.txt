@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/mini-game.rpy", line 191: the color keyword argument was not given a value.
-    color = "#b90a04"
-          ^
+File "game/script.rpy", line 402: end of line expected.
+    jump scene11:
+                ^
+
+File "game/script.rpy", line 414: end of line expected.
+    nei 'Это Лавров Игорь Олегович, проживаете по адресу *****?'\
+                                                                ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Mon Dec 18 23:34:21 2023
+Tue Dec 19 22:47:36 2023

@@ -18,6 +18,7 @@ init python:
             self.game_win = False
             self.timer = timer
             self.time = time
+            self.start = False
         
         def GetWordsFile(self, num):
             f = [i.replace('\n', '').upper() for i in open(os.path.join( renpy.config.gamedir, f"New{num}.txt"))]

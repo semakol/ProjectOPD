@@ -1,4 +1,11 @@
-﻿################################################################################
+﻿screen scene_num(n = 0):
+    frame:
+        style style.mini_game_frame
+        align (0.5, 0.4)
+        text str(n):
+            size 300
+
+################################################################################
 ## Инициализация
 ################################################################################
 
@@ -106,6 +113,9 @@ screen say(who, what):
                 id "namebox"
                 style "namebox"
                 text who id "who":
+                    align (0.5, 0.5)
+                    if len(who) > 10:
+                        size 30
                     slow_cps 20
 
         text what id "what":
@@ -1275,7 +1285,7 @@ style skip_triangle:
 
 screen notify(message):
 
-    zorder 100
+    zorder 120
     style_prefix "notify"
 
     frame at notify_appear:

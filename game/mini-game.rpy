@@ -26,16 +26,18 @@ style mini_game_text:
     color "08a"
     align (0.5, 0.5)
 
-define darker = Solid("72619c")
-define brighter = Solid("c6bfd7")
-define white = Solid("#fff")
-define time_out = False
-define font_hack = "consolas.ttf"
-define screen_on = True
+
 
 init python:
 
     import random
+
+    darker = Solid("72619c")
+    brighter = Solid("c6bfd7")
+    white = Solid("#fff")
+    time_out = False
+    font_hack = "consolas.ttf"
+    screen_on = True
 
     def PrinText(st, at):
         return Text(prtext, slow = 50, color = "08a"), .2
@@ -133,11 +135,11 @@ screen fin():
     add "fin.png":
         align (0.5, 0.5)
                 
-screen game_timer(time):
+screen game_timer(time, game):
     zorder 100
 
     if time < 1:
-        timer 1 action [SetVariable('time_out', True), Hide('game_timer')]
+        timer 1 action [SetVariable('time_out', True), Hide('game_timer'), Show("click", id2 = -1000, game = game)]
     frame:
         style style.mini_game_frame
         pos (1562, 83)
@@ -145,7 +147,7 @@ screen game_timer(time):
         text hex(time)[2:].upper():
             style style.mini_game_text
             size 100
-    timer 1 action [Hide('game_timer'),Show("game_timer", time = time - 1)]
+    timer 1 action [Hide('game_timer'),Show("game_timer", time = time - 1, game = game)]
 
 screen click(id2, game):
     timer 0.00001 action [Show('miniGame', id2 = id2, game = game), Hide('click')]
@@ -154,17 +156,20 @@ screen click(id2, game):
 screen miniGame(id2 = -1000, game = HakingGame()):
     $ game.ClickCheck(id2 = id2)
     $ text2 = ''
+    if not(game.start):
+        $ game.start = True
+        timer 0.01 action [SetVariable('screen_on', True), SetVariable('time_out', False)]
     if not(game.timer):
-        timer 0.00001 action [Show('game_timer', time = game.time)]
+        timer 0.00001 action [Show('game_timer', time = game.time, game = game)]
         $ game.timer = True
     tag menu
     zorder 100
     if game.game_win:
-        timer 0.00001 action [SetVariable('screen_on', False), Show('win', transition=squares)]
-        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('win')]
+        timer 0.1 action [SetVariable('screen_on', False), Show('win', transition=dissolve), Hide('game_timer')]
+        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('win'), Hide('click'), Hide('print'), Hide('miniGame')]
     if game.hp == 0 or time_out:
-        timer 0.00001 action [SetVariable('screen_on', False), Show('fin', transition=squares)]
-        timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin')]
+        timer 0.1 action [SetVariable('screen_on', False), Show('fin', transition=dissolve), Hide('game_timer')]
+        timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin'), Hide('click'), Hide('print'), Hide('miniGame')]
     add 'miniFon.jpg'
     add 'mini_game_mon.png'
     frame:
@@ -173,7 +178,8 @@ screen miniGame(id2 = -1000, game = HakingGame()):
         xysize (120, 200)
         button:
             style style.mini_game_button
-            action [Show('tutorial'), SetVariable('screen_on', False)]
+            if screen_on:
+                action [Show('tutorial'), SetVariable('screen_on', False)]
             text "Помощь":
                 style style.mini_game_text
     frame:
@@ -203,7 +209,7 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                             style style.mini_game_button
                             if screen_on:
                                 if (t[1] == -99) or (t[1] >= 0):
-                                    action Show("click", id2=t[2], game = game)
+                                    action [Show("click", id2=t[2], game = game), SetVariable('screen_on', True)]
                                     activate_sound "audio/effects/keyboard.mp3"
                                 else:
                                     action NullAction()
@@ -226,7 +232,7 @@ screen miniGame(id2 = -1000, game = HakingGame()):
                             style style.mini_game_button
                             if screen_on:
                                 if (t[1] == -99) or (t[1] >= 0):
-                                    action Show("click", id2=t[2], game = game)
+                                    action [Show("click", id2=t[2], game = game), SetVariable('screen_on', True)]
                                     activate_sound "audio/effects/keyboard.mp3"
                                 else:
                                     action NullAction()
