@@ -161,7 +161,7 @@ screen miniGame(id2 = -1000, game = HakingGame()):
     zorder 100
     if game.game_win:
         timer 0.00001 action [SetVariable('screen_on', False), Show('win', transition=squares)]
-        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin')]
+        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('win')]
     if game.hp == 0 or time_out:
         timer 0.00001 action [SetVariable('screen_on', False), Show('fin', transition=squares)]
         timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin')]
