@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 402: end of line expected.
-    jump scene11:
-                ^
-
-File "game/script.rpy", line 414: end of line expected.
-    nei 'Это Лавров Игорь Олегович, проживаете по адресу *****?'\
-                                                                ^
+File "game/script.rpy", line 966: menu statement expects a non-empty block.
+    menu:
+        ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Tue Dec 19 22:47:36 2023
+Wed Dec 20 23:55:26 2023

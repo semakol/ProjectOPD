@@ -1,9 +1,9 @@
 ﻿screen scene_num(n = 0):
     frame:
         style style.mini_game_frame
-        align (0.5, 0.4)
+        align (0, 0)
         text str(n):
-            size 300
+            size 200
 
 ################################################################################
 ## Инициализация

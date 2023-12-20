@@ -1,68 +1,80 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 508, in script
-    I ''
-  File "game/screens.rpy", line 104, in execute
-    screen say(who, what):
-  File "game/screens.rpy", line 104, in execute
-    screen say(who, what):
-  File "game/screens.rpy", line 107, in execute
-    window:
-  File "game/screens.rpy", line 110, in execute
-    if who is not None:
-  File "game/screens.rpy", line 112, in execute
-    window:
-  File "game/screens.rpy", line 115, in execute
-    text who id "who":
-  File "game/screens.rpy", line 115, in keywords
-    text who id "who":
-  File "game/screens.rpy", line 116, in keywords
-    if who > 10:
-  File "game/screens.rpy", line 116, in <module>
-    if who > 10:
-TypeError: '>' not supported between instances of 'str' and 'int'
+  File "game/script.rpy", line 884, in script
+    menu:
+  File "game/screens.rpy", line 222, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 222, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 233, in execute
+    vbox:
+  File "game/screens.rpy", line 234, in execute
+    for i in items:
+  File "game/screens.rpy", line 235, in execute
+    textbutton i.caption action i.action
+NameError: Name 'choice' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 508, in script
-    I ''
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 930, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 1474, in say
-    who(what, *args, **kwargs)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\character.py", line 1352, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\character.py", line 1003, in do_display
-    display_say(who,
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\character.py", line 638, in display_say
-    what_text = renpy.display.screen.get_widget(what_text[0], what_text[1], what_text[2])
-  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 1430, in get_displayable
-    screen.update()
+  File "game/script.rpy", line 884, in script
+    menu:
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ast.py", line 1922, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 1106, in menu
+    rv = renpy.store.menu(new_items)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\exports.py", line 1345, in display_menu
+    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 3587, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 684, in visit_all
+    d.visit_all(callback, seen)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 476, in visit_all
+    callback(self)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\core.py", line 4060, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 487, in per_interact
+    self.update()
   File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\display\screen.py", line 680, in update
     self.screen.function(**self.scope)
-  File "game/screens.rpy", line 104, in execute
-    screen say(who, what):
-  File "game/screens.rpy", line 104, in execute
-    screen say(who, what):
-  File "game/screens.rpy", line 107, in execute
-    window:
-  File "game/screens.rpy", line 110, in execute
-    if who is not None:
-  File "game/screens.rpy", line 112, in execute
-    window:
-  File "game/screens.rpy", line 115, in execute
-    text who id "who":
-  File "game/screens.rpy", line 115, in keywords
-    text who id "who":
-  File "game/screens.rpy", line 116, in keywords
-    if who > 10:
-  File "game/screens.rpy", line 116, in <module>
-    if who > 10:
-TypeError: '>' not supported between instances of 'str' and 'int'
+  File "game/screens.rpy", line 222, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 222, in execute
+    screen choice(items):
+  File "game/screens.rpy", line 233, in execute
+    vbox:
+  File "game/screens.rpy", line 234, in execute
+    for i in items:
+  File "game/screens.rpy", line 235, in execute
+    textbutton i.caption action i.action
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\ui.py", line 988, in _textbutton
+    text = renpy.text.text.Text(label, style=text_style, substitute=substitute, scope=scope, **text_kwargs)
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\text\text.py", line 1633, in __init__
+    self.set_text(text, scope, substitute) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\text\text.py", line 1763, in set_text
+    i, did_sub = renpy.substitutions.substitute(i, scope, substitute) # type: ignore
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\substitutions.py", line 278, in substitute
+    s = formatter.vformat(s, (), kwargs) # type: ignore
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 165, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 205, in _vformat
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\substitutions.py", line 168, in get_field
+    obj, arg_used = super(Formatter, self).get_field(field_name, args, kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 270, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/string.py", line 227, in get_value
+  File "G:\Program Files (x86)\renpy-8.1.2-sdk\renpy\substitutions.py", line 236, in __getitem__
+    raise NameError("Name '{}' is not defined.".format(key))
+NameError: Name 'choice' is not defined.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.1.2.23090503
 ProjectOPD 0.4-BETA
-Wed Dec 20 00:52:08 2023
+Wed Dec 20 23:43:36 2023
