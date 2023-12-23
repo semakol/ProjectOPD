@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 966: menu statement expects a non-empty block.
-    menu:
-        ^
+File "game/mini-game.rpy", line 117: the xpadding keyword argument was not given a value.
+    xpadding 
+             ^
 
 Ren'Py Version: Ren'Py 8.1.2.23090503
-Wed Dec 20 23:55:26 2023
+Sun Dec 24 02:26:14 2023

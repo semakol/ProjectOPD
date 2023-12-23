@@ -96,6 +96,34 @@ init python:
                 repeated += 1
         return repeated
 
+screen con():
+    frame:
+        style style.mini_game_frame_console
+        align (0.0, 1.0)
+        button:
+            hover_background "#04408f"
+            action [Return(), Hide("con", transition=fade), Hide("text_con", transition=fade)]
+            text 'Пропустить':
+                style style.mini_game_text
+                align (0.0, 0.0)
+                size 50
+                slow_cps 10
+    timer 2 action Show("text_con")
+
+screen text_con(t = '',y = 300):
+    add 'images/bg/cont.png'
+    frame:
+        style style.mini_game_frame_console
+        xalign 0.5
+        ypos y
+        text 'Игру разработали:\n\nТимлид:        Ковшевников Павел\nРазработчик:   Колыванов Семён\nДизайнер:      Коньшин Антон\nГейм-Дизайнер: Тюриков Данил\nАналитик:      Романов Стас\n                            \nСпасибо что играли <3':
+            style style.mini_game_text
+            color '#07f7eb'
+            size 45
+            slow_cps 8
+        
+
+
 screen print(text1):
     zorder 100
     frame:
@@ -165,11 +193,11 @@ screen miniGame(id2 = -1000, game = HakingGame()):
     tag menu
     zorder 100
     if game.game_win:
-        timer 0.1 action [SetVariable('screen_on', False), Show('win', transition=dissolve), Hide('game_timer')]
-        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('win'), Hide('click'), Hide('print'), Hide('miniGame')]
+        timer 0.1 action [SetVariable('screen_on', False), Show('win', transition=dissolve), Hide('game_timer'), Play("audio", 'audio/effects/win_sound.ogg')]
+        timer 4 action [Return(value = True), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('win'), Hide('click'), Hide('print'), Hide('miniGame'), SetVariable('screen_on', True)]
     if game.hp == 0 or time_out:
-        timer 0.1 action [SetVariable('screen_on', False), Show('fin', transition=dissolve), Hide('game_timer')]
-        timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin'), Hide('click'), Hide('print'), Hide('miniGame')]
+        timer 0.1 action [SetVariable('screen_on', False), Show('fin', transition=dissolve), Hide('game_timer'), Play("audio", 'audio/effects/fin_sound.ogg')]
+        timer 4 action [Return(value = False), Hide('print'), Hide('game_timer'), Hide('tutorial'), Hide('fin'), Hide('click'), Hide('print'), Hide('miniGame'), SetVariable('screen_on', True)]
     add 'miniFon.jpg'
     add 'mini_game_mon.png'
     frame:

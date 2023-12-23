@@ -1,15 +1,15 @@
 ﻿define I = Character('Игорь', color="#1d831d")
 define D = Character('Давид', color="#b3e00f", image = 'david')
-define DB = Character('Д. Быков', color="#352222")
 define aut = Character('', color='#c8ffc8')
 define tel = Character('Телефон', color='#989c72')
 define VP = Character('Виктор П.', color='#da3535')
 define ved = Character('Ведущая', color='#fffedc')
 define cor = Character('Марина', color='#fefff1')
 define nei = Character('Неизвестный', color='#fefff1')
-define O = Character('Ольга', color='#fefff1')
-define Al = Character('Александр', color='#fefff1')
-define M = Character('Михаил', color='#fefff1')
+define O = Character('Ольга', color='#8a44e6')
+define Al = Character('Александр', color='#5f05a8')
+define M = Character('Михаил', color='#7933fc')
+define S = Character('София', color='#8db913')
 
 $ rascazal = False
 $ Vzlomal = False
@@ -192,6 +192,8 @@ label scene4: # Тренировка
 
                 $ flag = False
 
+    show david with dissolve
+
     D 'Извини, опоздал'
 
     I 'Ну привет, Давид, опять опаздываешь. Почему не пришёл на интервью, мы должны были присутствовать оба?'
@@ -305,6 +307,8 @@ label scene6: # Расшифровка
 
     I 'Я верю в твоё красноречие, удачи. Я пока займусь расшифровкой файла.'
 
+    hide david with dissolve
+
     I 'Надо изучить этот файл.'
 
     $ flag = True
@@ -352,6 +356,8 @@ label scene8: # Осмотр файла
     show screen scene_num(8)
 
     scene main_office with fade
+
+    show david
 
     D 'Хватит на сегодня экскурсиями. Что там с файлом?'
 
@@ -538,6 +544,8 @@ label scene14: # Врыв
             
             I 'Дверь выглядит ненадёжно, думаю, я смогу ворваться.'
 
+            play audio 'audio/effects/door_sound.ogg'
+
             scene logovo with dissolve
 
             I 'ВСЕМ СТОЯТЬ! СЮДА УЖЕ ЕДЕТ ПОЛИЦИЯ!'
@@ -549,6 +557,10 @@ label scene14: # Врыв
         'Пролезть через вентиляцию':
 
             I 'Хм, вентиляция плохо закреплена, кажется, я смогу пролезть через неё.'
+            
+            scene vent with fade 
+
+            play audio 'audio/effects/vent_sound.ogg'
 
             nei 'Ну и где он?'
 
@@ -558,7 +570,9 @@ label scene14: # Врыв
 
             I 'Видимо, я прямо над ними.'
 
-            scene logovo with dissolve
+            scene logovo with fade
+
+            play audio 'audio/effects/padenie.ogg'
 
             nei 'О ГОСПОДИ!'
 
@@ -748,7 +762,8 @@ label scene16: # Общение с командой
                             $ Vzlomal = True
                         'Оставить как есть':
                             I 'Ладно, у меня нет сил на этот вирус. Мне нужно отдохнуть.'
-                    
+                            $ Vzlomal = False
+
                     $ flag2 = False
                 
                 pass
@@ -768,6 +783,8 @@ label scene18: # Сон
     pause 2
 
     scene main_office with fade
+
+    show david with dissolve
 
     D 'Игорь… Просыпайся.'
 
@@ -796,6 +813,8 @@ label scene18: # Сон
     D 'Да, рабочий день как раз подходит к концу.'
 
     D 'Я жду тебя, Игорь.'
+
+    hide david with dissolve
 
     scene black with fade
 
@@ -939,9 +958,11 @@ label scene21: # Серверная
     
     I 'Готово, я запускаю “Аврору”.'
 
+    D 'Остановись, Игорь!'
+
     scene server_room with dissolve
 
-    D 'Остановись, Игорь!'
+    show david
 
     I 'Давид, что происходит?'
 
@@ -972,14 +993,152 @@ label scene21: # Серверная
     menu:
         I ''
         'Активировать вирус "Аврора"':
-            pass
+            I 'Мне очень жаль, Давид.'
+
+            I 'Но я не могу сдаться.'
+
+            I '“Аврора” активирована.'
+
+            O 'Да, Игорь! Мы в тебе не сомневались, компромат загружен в сеть!'
+
+            D 'Что ты наделал, Игорь?!'
+
+            D 'Извини… Но я должен…'
+
+            D '… нет, я не могу'
+            
+            hide david
+
+            play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+
+            queue sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+
+            I 'Нет. ДАВИД!'
+
+            VP 'Я знал, что от тебя мало толку, Давид.'
+
+            I 'Я УБЬЮ ТЕБЯ!'
+
+            if Vzlomal:
+                play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+
+                queue sound 'audio/effects/pistolet-s-glushitelem.ogg' volume 1.3 noloop
+
+                I 'А-р-г-х, чёрт… я ранен.'
+
+                I 'Зато я в него тоже попал.'
+
+                I 'Мне нужно срочно уезжать.'
+
+                I 'Прощай, Давид, я позабочусь о твоей сестре.'
+
+                I 'Главное… не потерять много крови…'
+
+                I 'В глазах темнеет… голова кружится…'
+
+                jump scene22_1_1
+
+            else:
+                play sound 'audio/effects/pistolet-s-glushitelem.ogg' noloop
+
+                I 'Вам следует отдохнуть, Виктор Павлович. Скоро о вас позаботится полиция.'
+
+                I 'Вирус загружен, мне нужно срочно уходить, пока тут не появились ещё люди.'
+
+                I 'Прощай, Давид, я позабочусь о твоей сестре.'
+
+                jump scene22_1_2
 
         'Уничтожить вирус “Аврора”':
-            pass
+            I 'Давид… Я так не могу.'
+
+            I 'Я не могу пойти против тебя.'
+
+            O 'Нет! Нет...'
+
+            D 'Я понимаю, Игорь. Как бы мне не хотелось помочь тебе, я не могу. Ты знаешь, София моя единственная семья и я не переживу, если и она покинет меня.'
+
+            D 'Мне жаль, но ты должен покинуть этот город, ради твоей же безопасности. Прямо сейчас, начни новую жизнь в другом городе и забудь про “КиберЛок”.'
+
+            D 'Прощай, Игорь.'
+
+            I 'Прощай, старый друг.'
+
+            I 'Я уверен, мы ещё встретимся.'
+
+            D 'Буду надеяться.'
+
+            jump scene22_2
+
+    jump scene22_1_1
+
+label scene22_1_1:
+
+    scene office_cor with fade
+
+    pause 0.5
+
+    scene menu_bg2 with fade
+
+    O 'Не бойся, Игорь. Тебя никто не будет вспоминать. Но мы должны выразить тебе большую благодарность. Ты помог нам разбогатеть.'
+
+    Al 'Вирус переслал все нужные файлы нам. Теперь мы будем контролировать всех, ведь у “КиберЛок” были данные про всех политиков, про каждого человека в этом городе.'
+
+    I 'Вы думаете, что я настолько наивный? Что я буду доверять каждому встречному?'
+
+    I 'Проверьте входящие файлы.'
+
+    I 'Я изменил вирус.'
+
+    play music 'audio/effects/kassetnyj-magnitofon.ogg'
+
+    I '…'
+
+    I 'Я прожил неплохую жизнь. Остановил злодейскую корпорацию, остановил злых хакеров.'
+
+    window hide
+
+    $ quick_menu = False
+
+    pause 2
+
+    call screen con
+
+    scene black
+
+    pause 1
 
     return
 
-        
+label scene22_1_2:
+
+    scene office_cor with fade
+
+    pause 0.5
+
+    scene dark_street with fade
+
+    play music 'audio/effects/kassetnyj-magnitofon.ogg'
+
+    I 'Осталось ещё одно дело.'
+
+    window hide
+
+    $ quick_menu = False
+
+    pause 2
+
+    call screen con
+
+    scene black
+
+    pause 1
+
+    return
+
+label scene22_2:
+
+
 
 
 

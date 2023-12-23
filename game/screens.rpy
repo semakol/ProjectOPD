@@ -231,6 +231,10 @@ screen choice(items):
     #             slow_cps 20
     #             size 50
     vbox:
+        if len(items[0].caption) > 100:
+            ypos 500
+        else:
+            ypos 940
         for i in items:
             textbutton i.caption action i.action
 
@@ -241,7 +245,6 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 940
     yanchor 0.5
 
     spacing gui.choice_spacing
