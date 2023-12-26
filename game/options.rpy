@@ -46,8 +46,8 @@ define build.name = "ProjectOPD"
 ## игроку по умолчанию. Установка одной из них в False скроет соответствующий
 ## микшер.
 
-define config.has_sound = False
-define config.has_music = False
+define config.has_sound = True
+define config.has_music = True
 define config.has_voice = False
 
 
@@ -160,6 +160,8 @@ define config.window_icon = "gui/window_icon.png"
 ## проекта.
 
 init python:
+
+    renpy.music.register_channel("ambient", loop = True, mixer = 'ambient')
 
     ## Следующие функции берут образцы файлов. Образцы файлов не учитывают
     ## регистр и соответствующе зависят от директории проекта (base), с или без

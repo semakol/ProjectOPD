@@ -1,15 +1,17 @@
 ﻿define I = Character('Игорь', color="#1d831d")
-define D = Character('Давид', color="#b3e00f", image = 'david')
+define D = Character('Давид', color="#b3e00f")
 define aut = Character('', color='#c8ffc8')
 define tel = Character('Телефон', color='#989c72')
 define VP = Character('Виктор П.', color='#da3535')
-define ved = Character('Ведущая', color='#fffedc')
-define cor = Character('Марина', color='#fefff1')
+define ved = Character('Ведущая', color='#383acc')
+define cor = Character('Марина', color='#1c42f0')
 define nei = Character('Неизвестный', color='#fefff1')
 define O = Character('Ольга', color='#8a44e6')
 define Al = Character('Александр', color='#5f05a8')
 define M = Character('Михаил', color='#7933fc')
 define S = Character('София', color='#8db913')
+
+
 
 $ rascazal = False
 $ Vzlomal = False
@@ -61,11 +63,15 @@ label scene2: # Новости
 
     show screen scene_num(2)
 
+    play sound 'audio/effects/news.mp3' fadein 0.5 volume 0.15 noloop
+
     scene studia with fade
 
     ved 'Доброе утро, Кибербург! Меня зовут Екатерина и я приветствую вас на ежедневном выпуске новостей!'
 
-    ved 'Именно сегодня юбилей компании “Киберлок”! Уже 20 лет они занимаются сохранностью наших данных, кроме того, компания известна своими вкладами в благотворительность, только за прошедший год компания пожертвовала в благотворительный фонд 500 миллионов рублей.'
+    ved 'Именно сегодня юбилей компании “Киберлок”!'
+
+    ved 'Уже 20 лет они занимаются сохранностью наших данных, кроме того, компания известна своими вкладами в благотворительность, только за прошедший год компания пожертвовала в благотворительный фонд 500 миллионов рублей.'
 
     ved 'В честь такого знаменательного события наш корреспондент берёт интервью у главы отдела кибербезопасности. Передаю слово корреспонденту.'
 
@@ -78,6 +84,8 @@ label scene3: # Интерьвью
     show screen scene_num(3)
 
     scene enter_kyberlok with fade
+
+    play ambient 'audio/effects/veter.mp3' fadein 2.0 volume 0.5
 
     cor 'Спасибо, Екатерина. Меня зовут Мария и прямо сейчас я с главой отдела кибербезопасности стоим у главного офиса компании “КиберЛок”.'
 
@@ -159,6 +167,8 @@ label scene3: # Интерьвью
 
     cor 'Благодарю вас за интересный разговор и ценные ответы на вопросы! Я и наши телезрители узнали много нового!'
 
+    stop ambient
+
     jump scene4
     
     return
@@ -169,14 +179,17 @@ label scene4: # Тренировка
 
     scene main_office with fade
 
+    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
+
     I 'Давид опять не пришёл вовремя. Пока его нет я могу потренироваться.'
     
     $ flag = True
     while flag:
+        stop ambient fadeout 0.5
         $ miniGame1 = HakingGame(0, 6, True)
         call screen miniGame(game = miniGame1) with dissolve
         $ miniGame1 = None
-
+        play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
         if _return:
             I 'Хорошо получилось'
         else:
@@ -220,10 +233,11 @@ label scene4: # Тренировка
     
     $ flag = True
     while flag:
+        stop ambient fadeout 0.5
         $ miniGame1 = HakingGame(120, 7)
         call screen miniGame(game = miniGame1) with dissolve
         $ miniGame1 = None
-
+        play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
         if _return:
             I 'Хорошо получилось'
             $ flag = False
@@ -238,6 +252,10 @@ label scene5: # Нападение
     show screen scene_num(5)
 
     D 'Игорь! В системе найден скрипт удалённого доступа. Код красный, они положили антивирус и запустили ещё больше вредоносного ПО.'
+
+    hide david
+
+    show monitor with dissolve 
 
     I 'Да, вижу. Они слишком быстро входят в систему, нужно заняться обороной и контр-атакой. Если мы не поторопимся, у них будет полный контроль.'
 
@@ -295,6 +313,12 @@ label scene6: # Расшифровка
 
     show screen scene_num(6)
 
+    play sound 'audio/effects/shagi.ogg' noloop
+
+    scene main_office with dissolve
+
+    show david with dissolve
+
     I 'Я и забыл, сегодня же к нам приводят студентов. “КиберЛок” умеет привлекать новых людей, особенно в такие праздники.'
 
     I 'Мы должны провести им экскурсию и рассказать им про этот отдел.'
@@ -313,9 +337,12 @@ label scene6: # Расшифровка
 
     $ flag = True
     while flag:
+
+        stop ambient fadeout 0.5
         $ miniGame1 = HakingGame(100, 8)
         call screen miniGame(game = miniGame1)
         $ miniGame1 = None
+        play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
 
         if _return:
             I 'Хорошо получилось'
@@ -332,6 +359,8 @@ label scene6: # Расшифровка
 label scene7: # Студенты
 
     show screen scene_num(7)
+
+    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.01
 
     scene intervie with fade
 
@@ -405,6 +434,9 @@ label scene8: # Осмотр файла
             D 'Да, я тоже. Хорошего вечера.'
 
             $ rascazal = False
+
+    stop ambient
+
     jump scene9
 
 label scene9: # Дом
@@ -423,9 +455,15 @@ label scene9: # Дом
 
     I 'Оставили, свою символику. Думают, что смогут всегда прятаться. Уверенности им не занимать, ещё бы чуть-чуть и мы бы их полностью вычислили.'
 
+    scene black with fade
+
+    pause 2.0
+
     jump scene10
 
 label scene10: # Увольнение*
+
+    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
 
     show screen scene_num(10)
 
@@ -448,15 +486,21 @@ label scene10: # Увольнение*
     else:
         I '(думает) Странно, Давид так ещё не опаздывал, надеюсь, он сегодня придёт. Надо с ним связаться.'
 
+        play sound 'audio/effects/zvonok.mp3' volume 0.5 noloop
+
         tel 'Звонок Давиду'
 
         I 'Придётся прикрыть его и сделать работу за него.'
 
         I 'Странный сегодня день. Наверное, я заработался, лучше уйду сегодня пораньше.'
+
+    stop ambient fadeout 1.0
     
     jump scene11
 
 label scene11: # Дом сгорел...
+
+    play ambient 'audio/effects/ylica.mp3' fadein 2.0 volume 0.1
 
     show screen scene_num(11)
 
@@ -465,6 +509,8 @@ label scene11: # Дом сгорел...
     I 'Надо срочно связаться с Давидом.'
 
     I 'Надеюсь, он в порядке. Обычно он предупреждает, если не приходит на работу.'
+
+    play sound 'audio/effects/zvonok.mp3' volume 0.5 noloop
 
     tel 'Звонок'
 
@@ -494,6 +540,8 @@ label scene12: # Бар
 
     I '(думает) Единственное место поблизости, где можно расслабится и собраться с мыслями.'
 
+    stop ambient fadeout 2.0
+
     # scene ,/,/
 
     I 'Бармен, колу.'
@@ -516,6 +564,8 @@ label scene13: # Преследование
 
     show screen scene_num(13)
 
+    play ambient 'audio/effects/ylica.mp3' fadein 2.0 volume 0.02
+
     scene logovo_outside with fade
 
     I '(думает) Куда же он направляется?'
@@ -536,6 +586,8 @@ label scene14: # Врыв
 
     scene logovo_outside
 
+    stop ambient fadeout 1.0
+
     menu:
         I ''
         'Ворваться через главную дверь':
@@ -544,7 +596,7 @@ label scene14: # Врыв
             
             I 'Дверь выглядит ненадёжно, думаю, я смогу ворваться.'
 
-            play audio 'audio/effects/door_sound.ogg'
+            play sound 'audio/effects/door_sound.ogg' noloop
 
             scene logovo with dissolve
 
@@ -560,7 +612,7 @@ label scene14: # Врыв
             
             scene vent with fade 
 
-            play audio 'audio/effects/vent_sound.ogg'
+            play sound 'audio/effects/vent_sound.ogg' noloop
 
             nei 'Ну и где он?'
 
@@ -570,9 +622,9 @@ label scene14: # Врыв
 
             I 'Видимо, я прямо над ними.'
 
-            scene logovo with fade
+            play sound 'audio/effects/padenie.ogg' noloop
 
-            play audio 'audio/effects/padenie.ogg'
+            scene logovo with fade
 
             nei 'О ГОСПОДИ!'
 
@@ -618,21 +670,21 @@ label scene15: # Знакомство (Концовка 1)
 
     O 'Вообщем, Игорь, мы хотим остановить “КиберЛок” за их “бизнес”, мы оставили для тебя файл во время атаки, чтоб ты тоже знал. И я предлагаю тебе присоединиться к нам для совместной борьбы, нам очень нужен такой человек как ты.'
 
-    O ' Они забрали твою работу, забрали твой дом. Почему бы тебе не помочь нам остановить их?'
+    O 'Они забрали твою работу, забрали твой дом. Почему бы тебе не помочь нам остановить их?'
 
-    menu:
-        I ''
-        'Присоединиться к “Спектрум”':
-            I 'Да, я помогу вам. “КиберЛок” должен прекратить существование.'
+    # menu:
+    #     I ''
+    #     'Присоединиться к “Спектрум”':
+            # I 'Да, я помогу вам. “КиберЛок” должен прекратить существование.'
 
-        'Работать в одиночку':
-            I 'Нет я работаю один.'
+        # 'Работать в одиночку':
+        #     I 'Нет я работаю один.'
 
-            aut 'Игорь пропал безвести'
+        #     aut 'Игорь пропал безвести'
             
-            pause
+        #     pause
             
-            return
+        #     return
 
     jump scene16
 
@@ -780,15 +832,17 @@ label scene18: # Сон
 
     show screen scene_num(18)
 
+    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1 
+
     pause 2
-
-    scene main_office with fade
-
-    show david with dissolve
 
     D 'Игорь… Просыпайся.'
 
     D 'Игорь!'
+
+    scene main_office with fade
+
+    show david with dissolve
 
     I 'А? Что?'
 
@@ -817,6 +871,8 @@ label scene18: # Сон
     hide david with dissolve
 
     scene black with fade
+
+    stop ambient fadeout 0.5
 
     jump scene19
 
@@ -930,6 +986,8 @@ label scene21: # Серверная
 
     show screen scene_num(21)
 
+    play ambient 'audio/effects/server.mp3' fadein 0.5 volume 0.1
+
     scene server_room with fade
 
     pause 0.5
@@ -941,12 +999,14 @@ label scene21: # Серверная
     Al 'Отлично, мы уже готовы запускать компромат. Но сначала ты активируй “Аврору”.'
 
     I 'Это займёт некоторое время. Сервера закрыты паролем. Просто дайте мне время расшифровать пароль.'
-
     $ flag = True
     while flag:
+        stop ambient
         $ miniGame1 = HakingGame(40, 8)
         call screen miniGame(game = miniGame1)
         $ miniGame1 = None
+
+        play ambient 'audio/effects/server.mp3' fadein 0.5 volume 0.1
 
         if _return:
             I 'Хорошо получилось'
@@ -955,6 +1015,8 @@ label scene21: # Серверная
             I 'Не получилось'
 
             I 'Надо ещё раз'
+
+    
     
     I 'Готово, я запускаю “Аврору”.'
 
@@ -1020,6 +1082,9 @@ label scene21: # Серверная
             I 'Я УБЬЮ ТЕБЯ!'
 
             if Vzlomal:
+
+                pause 0.5
+
                 play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
 
                 queue sound 'audio/effects/pistolet-s-glushitelem.ogg' volume 1.3 noloop
@@ -1035,17 +1100,25 @@ label scene21: # Серверная
                 I 'Главное… не потерять много крови…'
 
                 I 'В глазах темнеет… голова кружится…'
+                stop ambient fadeout 0.5
 
                 jump scene22_1_1
 
             else:
+
+                pause 0.
+
                 play sound 'audio/effects/pistolet-s-glushitelem.ogg' noloop
 
-                I 'Вам следует отдохнуть, Виктор Павлович. Скоро о вас позаботится полиция.'
+                I 'За Давида.'
+
+                I 'Я обязательно доберусь до тебя. Без разницы где ты будешь, в тюрьме или на воле.'
 
                 I 'Вирус загружен, мне нужно срочно уходить, пока тут не появились ещё люди.'
 
                 I 'Прощай, Давид, я позабочусь о твоей сестре.'
+
+                stop ambient fadeout 0.5
 
                 jump scene22_1_2
 
@@ -1067,8 +1140,11 @@ label scene21: # Серверная
             I 'Я уверен, мы ещё встретимся.'
 
             D 'Буду надеяться.'
+            stop ambient fadeout 0.5
 
             jump scene22_2
+
+    stop ambient fadeout 0.5
 
     jump scene22_1_1
 
@@ -1090,7 +1166,7 @@ label scene22_1_1:
 
     I 'Я изменил вирус.'
 
-    play music 'audio/effects/kassetnyj-magnitofon.ogg'
+    play music 'audio/effects/1con-music.ogg'
 
     I '…'
 
@@ -1104,6 +1180,8 @@ label scene22_1_1:
 
     call screen con
 
+    stop music fadeout 1.0
+
     scene black
 
     pause 1
@@ -1114,13 +1192,33 @@ label scene22_1_2:
 
     scene office_cor with fade
 
-    pause 0.5
+    O 'Хорошая работа, Игорь.'
 
-    scene dark_street with fade
+    O 'Не думала, что ты настолько наивный. Теперь “КиберЛок” больше нет и мы займём их место. А всё благодаря тебе.'
 
-    play music 'audio/effects/kassetnyj-magnitofon.ogg'
+    I 'Так вы соврали…'
+
+    I 'Я не оставлю это безнаказанным.'
+
+    scene menu_bg2 with fade
 
     I 'Осталось ещё одно дело.'
+
+    I 'Всё время меня кто-то использовал…'
+
+    I 'Сначала “КиберЛок”, потом “Спектрум”'
+
+    play music 'audio/effects/2con-music.ogg'
+
+    I '...'
+
+    I 'Я всего-лишь мечтал сделать мир лучше хорошими поступками.'
+
+    I 'Но этот мир слишком несправедлив. Каждый, кто получает власть в этом городе использует её в свою пользу'
+
+    I 'И я не могу оставить это безнаказанным.'
+
+    I 'Я больше не Игорь, отныне я их ночной кошмар и я доберусь до каждого, кто угрожает безопасности в этом городе.'
 
     window hide
 
@@ -1130,6 +1228,8 @@ label scene22_1_2:
 
     call screen con
 
+    stop music fadeout 1.0
+
     scene black
 
     pause 1
@@ -1138,7 +1238,57 @@ label scene22_1_2:
 
 label scene22_2:
 
+    scene office_cor with fade
 
+    I 'Ало.'
+
+    S 'Это Игорь?'
+
+    I 'Да.'
+
+    I 'Погоди. София?! Я очень рад тебя слышать! Как ты? Ты уже выздоровела?'
+
+    S 'Со мной всё хорошо, я тоже очень рада вновь услышать тебя… Но…'
+
+    S 'Давид пропал… никто не видел его уже несколько дней.'
+
+    I 'Что? Но он не мог оставить тебя'
+
+    S 'Я узнала об этом сразу, как меня выписали. Я побежала к нему домой, но когда я зашла… В квартире был хаос.'
+
+    S 'Всё было перевёрнуто. В его квартире как будто что-то искали. А в другой комнате следы драки.'
+
+    S 'Среди разбросанной бумаги я нашла записку от Давида.'
+
+    play music 'audio/effects/1con-music.ogg' fadein 1.0
+
+    S  '“Если кто-то это читает, то вы должны узнать. В этой жизни я был не лучшим человеком, я не был оптимистом, не пытался сделать мир лучше… пока не познакомился со своим лучшим другом.'
+
+    S 'Но всё равно последнее время я занимался ужасными вещами, у меня не было другого выбора. Я занимался грязными делами, работая на “КиберЛок”, но спустя время я осознал…'
+
+    S 'я понял, что этот ужас не должен продолжаться вечно. Увы, я понял это слишком поздно, но всё равно попытался остановить “КиберЛок” в одиночку.'
+
+    S 'Мне кажется, они уже всё поняли в ближайшее время меня попытаются убрать, как это было с другими…'
+
+    S 'Пожалуйста, Игорь, если ты это читаешь, позаботься о Софии. И прощай. ”'
+
+    S '...'
+
+    window hide
+
+    $ quick_menu = False
+
+    pause 2
+
+    call screen con
+
+    stop music fadeout 1.0
+
+    scene black
+
+    pause 1
+
+    return
 
 
 
