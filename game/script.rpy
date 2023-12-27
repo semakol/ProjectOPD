@@ -11,10 +11,18 @@ define Al = Character('Александр', color='#5f05a8')
 define M = Character('Михаил', color='#7933fc')
 define S = Character('София', color='#8db913')
 
+transform toleft:
+    ypos 200 xalign 0.0
+    linear 2 xalign -1.0
 
+transform logovoright:
+    zoom 0.8 align (0.8, 0.9) 
 
-$ rascazal = False
-$ Vzlomal = False
+transform sercenter:
+    zoom 0.9 align (0.5, 1.0)
+
+define rascazal = False
+define Vzlomal = False
 
 label start1:
 
@@ -49,6 +57,8 @@ label start1:
 
 label start: # старт
 
+    stop music fadeout 0.5
+
     show screen scene_num(1)
     
     scene menu_bg2 with fade
@@ -67,6 +77,8 @@ label scene2: # Новости
 
     scene studia with fade
 
+    show ved
+
     ved 'Доброе утро, Кибербург! Меня зовут Екатерина и я приветствую вас на ежедневном выпуске новостей!'
 
     ved 'Именно сегодня юбилей компании “Киберлок”!'
@@ -84,6 +96,8 @@ label scene3: # Интерьвью
     show screen scene_num(3)
 
     scene enter_kyberlok with fade
+
+    show cor
 
     play ambient 'audio/effects/veter.mp3' fadein 2.0 volume 0.5
 
@@ -232,6 +246,7 @@ label scene4: # Тренировка
             D 'Хорошо, приступаю к анализу.'
     
     $ flag = True
+    $ trying = 0
     while flag:
         stop ambient fadeout 0.5
         $ miniGame1 = HakingGame(120, 7)
@@ -242,7 +257,22 @@ label scene4: # Тренировка
             I 'Хорошо получилось'
             $ flag = False
         else:
+
             I 'Не получилось'
+
+            $ trying += 1
+
+            if trying > 1:
+
+                menu:
+                    I ''
+                    'Попробовать снова':
+
+                        I 'Надо ещё раз'
+
+                    'Пропустить':
+
+                        $ flag = False
             
 
     jump scene5
@@ -252,10 +282,6 @@ label scene5: # Нападение
     show screen scene_num(5)
 
     D 'Игорь! В системе найден скрипт удалённого доступа. Код красный, они положили антивирус и запустили ещё больше вредоносного ПО.'
-
-    hide david
-
-    show monitor with dissolve 
 
     I 'Да, вижу. Они слишком быстро входят в систему, нужно заняться обороной и контр-атакой. Если мы не поторопимся, у них будет полный контроль.'
 
@@ -334,7 +360,7 @@ label scene6: # Расшифровка
     hide david with dissolve
 
     I 'Надо изучить этот файл.'
-
+    $ trying = 0
     $ flag = True
     while flag:
 
@@ -349,8 +375,20 @@ label scene6: # Расшифровка
             $ flag = False
         else:
             I 'Не получилось'
+        
+            $ trying += 1
 
-            I 'Надо ещё раз'
+            if trying > 1:
+
+                menu:
+                    I ''
+                    'Попробовать снова':
+
+                        I 'Надо ещё раз'
+
+                    'Пропустить':
+
+                        $ flag = False
 
     I 'Ну вот, файл расшифрован на 80\%. Дальше справится система.'
 
@@ -453,6 +491,8 @@ label scene9: # Дом
 
     I 'Надо ещё раз проанализировать самое начало.'
 
+    scene pc2
+
     I 'Оставили, свою символику. Думают, что смогут всегда прятаться. Уверенности им не занимать, ещё бы чуть-чуть и мы бы их полностью вычислили.'
 
     scene black with fade
@@ -472,6 +512,8 @@ label scene10: # Увольнение*
     if rascazal:
 
         I '(думает) Никогда ещё не начинал свой день с такой напряжённой атмосферы в отделе.'
+
+        show dir with dissolve
 
         I 'Доброе утро, Виктор Павлович.'
 
@@ -542,19 +584,31 @@ label scene12: # Бар
 
     stop ambient fadeout 2.0
 
-    # scene ,/,/
+    scene in_bar with dissolve
 
     I 'Бармен, колу.'
+
+    scene cola with dissolve
 
     I '(думает) Фух… И вправду расслабляет.'
 
     I 'Нужно решить что делать дальше. У меня нет дома, нет работы и нет денег. Самое важное: найти место, где я смогу переночевать. А Давид, как назло, не отвечает на звонки.'
 
+    pause 1.0
+
+    scene in_bar with dissolve
+
+    show olg2 with dissolve:
+        xalign 0.0
+        ypos 200
+
     I 'Хм, знакомая символика… Где я видел эту эмблему???'
 
     I 'Точно! В логах хакерской атаки был этот знак.'
 
-    I 'Я должен проследить за ним'
+    I 'Я должен проследить за ней'
+
+    show olg2 at toleft
 
     I 'Вот 500 рублей, сдачи не надо.'
 
@@ -568,9 +622,9 @@ label scene13: # Преследование
 
     scene logovo_outside with fade
 
-    I '(думает) Куда же он направляется?'
+    I '(думает) Куда же онa направляется?'
 
-    I 'Либо это его дом, либо его логово.'
+    I 'Либо это её дом, либо её логово.'
 
     I 'В любом случае, я должен туда пробраться и узнать информацию.'
 
@@ -596,9 +650,11 @@ label scene14: # Врыв
             
             I 'Дверь выглядит ненадёжно, думаю, я смогу ворваться.'
 
-            play sound 'audio/effects/door_sound.ogg' noloop
+            play sound 'audio/effects/door_sound.ogg' noloop volume 0.5
 
             scene logovo with dissolve
+
+            show olg at logovoright with dissolve 
 
             I 'ВСЕМ СТОЯТЬ! СЮДА УЖЕ ЕДЕТ ПОЛИЦИЯ!'
 
@@ -612,7 +668,7 @@ label scene14: # Врыв
             
             scene vent with fade 
 
-            play sound 'audio/effects/vent_sound.ogg' noloop
+            play sound 'audio/effects/vent_sound.ogg' noloop volume 0.5
 
             nei 'Ну и где он?'
 
@@ -622,9 +678,11 @@ label scene14: # Врыв
 
             I 'Видимо, я прямо над ними.'
 
-            play sound 'audio/effects/padenie.ogg' noloop
+            play sound 'audio/effects/padenie.ogg' noloop volume 0.5
 
             scene logovo with fade
+
+            show olg at logovoright with dissolve 
 
             nei 'О ГОСПОДИ!'
 
@@ -646,6 +704,8 @@ label scene14: # Врыв
 
             scene logovo with dissolve
 
+            show olg at logovoright with dissolve 
+
             nei 'Добро пожаловать, Игорь!'
     
     jump scene15
@@ -655,6 +715,8 @@ label scene15: # Знакомство (Концовка 1)
     show screen scene_num(15)
 
     scene logovo
+
+    show olg at logovoright
 
     I 'Вы заманили меня? Откуда вы знаете моё имя?'
 
@@ -694,6 +756,8 @@ label scene16: # Общение с командой
 
     scene logovo
 
+    show olg at logovoright
+
     I 'Ладно, я решил. Я помогу вам остановить “КиберЛок”, но после я вас покину.'
 
     O 'Хорошо, я понимаю. У нас уже готов план и успех этой миссии зависит от тебя.'
@@ -711,6 +775,8 @@ label scene16: # Общение с командой
     I 'Понял, я не подведу. “Киберлок” заплатит за всё.'
 
     O 'Пока можешь отдохнуть и подготовиться к миссии.'
+
+    hide olg
 
     $ flag1 = True
     $ flag2 = True
@@ -774,6 +840,7 @@ label scene16: # Общение с командой
 
                     I 'Доступ зашифрован, неплохо, но я смогу получить доступ.'
 
+                    $ trying = 0
                     $ flag = True
                     while flag:
                         $ miniGame1 = HakingGame(80, 8)
@@ -785,6 +852,20 @@ label scene16: # Общение с командой
                             $ flag = False
                         else:
                             I 'Не получилось'
+        
+                            $ trying += 1
+
+                            if trying > 1:
+
+                                menu:
+                                    I ''
+                                    'Попробовать снова':
+
+                                        I 'Надо ещё раз'
+
+                                    'Пропустить':
+
+                                        $ flag = False
 
                     I 'И-и-и… Готово! Ну посмотрим что тут.'
 
@@ -797,6 +878,7 @@ label scene16: # Общение с командой
                         'Исправить вирус':
                             I 'Принцип работы вируса я понял. Исправить будет не сложно.'
 
+                            $ trying = 0
                             $ flag = True
                             while flag:
                                 $ miniGame1 = HakingGame(60, 8)
@@ -808,6 +890,20 @@ label scene16: # Общение с командой
                                     $ flag = False
                                 else:
                                     I 'Не получилось'
+        
+                                    $ trying += 1
+
+                                    if trying > 2:
+
+                                        menu:
+                                            I ''
+                                            'Попробовать снова':
+
+                                                I 'Надо ещё раз'
+
+                                            'Пропустить':
+
+                                                $ flag = False
                             
                             I 'Отлично, теперь когда вирус активируется, то абсолютно все данные исчезнут, включая данные про меня.'
 
@@ -884,6 +980,8 @@ label scene19: # Планирование
 
     scene logovo with fade
 
+    show olg at logovoright with dissolve 
+
     O 'Игорь… Просыпайся'
 
     I 'Так это был сон…'
@@ -920,7 +1018,7 @@ label scene19: # Планирование
             O 'Именно так. Флешка с “Авророй” уже у тебя. Тебе нужно будешь всего-лишь загрузить вирус в сервера.'
         
         'Сломать сервера вручную':
-            O 'ломать сервера руками не стоит. Тебе нужно будешь всего-лишь загрузить вирус в сервера.'
+            O 'Ломать сервера руками не стоит. Тебе нужно будешь всего-лишь загрузить вирус в сервера.'
         
     O 'После чего мы начнём транслировать уже готовый компромат на “КиберЛок” и им настанет конец.'
 
@@ -1000,6 +1098,7 @@ label scene21: # Серверная
 
     I 'Это займёт некоторое время. Сервера закрыты паролем. Просто дайте мне время расшифровать пароль.'
     $ flag = True
+    $ trying = 0
     while flag:
         stop ambient
         $ miniGame1 = HakingGame(40, 8)
@@ -1013,8 +1112,20 @@ label scene21: # Серверная
             $ flag = False
         else:
             I 'Не получилось'
+        
+            $ trying += 1
 
-            I 'Надо ещё раз'
+            if trying > 2:
+
+                menu:
+                    I ''
+                    'Попробовать снова':
+
+                        I 'Надо ещё раз'
+
+                    'Пропустить':
+
+                        $ flag = False
 
     
     
@@ -1068,12 +1179,14 @@ label scene21: # Серверная
             D 'Извини… Но я должен…'
 
             D '… нет, я не могу'
-            
+
+            play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.3 noloop
+
             hide david
 
-            play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+            show dir at sercenter with dissolve 
 
-            queue sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+            queue sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.3 noloop
 
             I 'Нет. ДАВИД!'
 
@@ -1085,7 +1198,9 @@ label scene21: # Серверная
 
                 pause 0.5
 
-                play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.8 noloop
+                play sound 'audio/effects/shumnyiy-odinochnyiy-vyistrel.ogg' volume 0.3 noloop
+
+                hide dir
 
                 queue sound 'audio/effects/pistolet-s-glushitelem.ogg' volume 1.3 noloop
 
@@ -1106,7 +1221,7 @@ label scene21: # Серверная
 
             else:
 
-                pause 0.
+                hide dir
 
                 play sound 'audio/effects/pistolet-s-glushitelem.ogg' noloop
 
@@ -1154,7 +1269,7 @@ label scene22_1_1:
 
     pause 0.5
 
-    scene menu_bg2 with fade
+    scene con1 with fade
 
     O 'Не бойся, Игорь. Тебя никто не будет вспоминать. Но мы должны выразить тебе большую благодарность. Ты помог нам разбогатеть.'
 
@@ -1166,7 +1281,7 @@ label scene22_1_1:
 
     I 'Я изменил вирус.'
 
-    play music 'audio/effects/1con-music.ogg'
+    play music 'audio/1con-music.ogg'
 
     I '…'
 
@@ -1208,7 +1323,7 @@ label scene22_1_2:
 
     I 'Сначала “КиберЛок”, потом “Спектрум”'
 
-    play music 'audio/effects/2con-music.ogg'
+    play music 'audio/2con-music.ogg'
 
     I '...'
 
@@ -1240,6 +1355,10 @@ label scene22_2:
 
     scene office_cor with fade
 
+    play sound 'audio/effects/zvonok.mp3' volume 0.5 noloop
+
+    tel 'Звонок'
+
     I 'Ало.'
 
     S 'Это Игорь?'
@@ -1254,13 +1373,15 @@ label scene22_2:
 
     I 'Что? Но он не мог оставить тебя'
 
+    scene con3 with fade
+
     S 'Я узнала об этом сразу, как меня выписали. Я побежала к нему домой, но когда я зашла… В квартире был хаос.'
 
     S 'Всё было перевёрнуто. В его квартире как будто что-то искали. А в другой комнате следы драки.'
 
     S 'Среди разбросанной бумаги я нашла записку от Давида.'
 
-    play music 'audio/effects/1con-music.ogg' fadein 1.0
+    play music 'audio/1con-music.ogg' fadein 1.0
 
     S  '“Если кто-то это читает, то вы должны узнать. В этой жизни я был не лучшим человеком, я не был оптимистом, не пытался сделать мир лучше… пока не познакомился со своим лучшим другом.'
 

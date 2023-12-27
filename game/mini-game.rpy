@@ -116,12 +116,24 @@ screen text_con(t = '',y = 300):
         style style.mini_game_frame_console
         xalign 0.5
         ypos y
-        text 'Игру разработали:\n\nКоманда "P&S.Gang"\n\nТимлид:        Ковшевников Павел\nРазработчик:   Колыванов Семён\nДизайнер:      Коньшин Антон\nГейм-Дизайнер: Тюриков Данил\nАналитик:      Романов Стас\n                            \nСпасибо что играли <3':
+        text 'Игру разработали:\n\nКоманда "P&S.Gang"\n\nТимлид:        Ковшевников Павел\nРазработчик:   Колыванов Семён\nДизайнер:      Коньшин Антон\nГейм-Дизайнер: Тюриков Данил\nАналитик:      Романов Станислав\n                            \nСпасибо что играли <3':
             style style.mini_game_text
             color '#07f7eb'
             size 45
             slow_cps 8
-        
+
+screen pass_game():
+    frame:
+        style style.mini_game_frame_console
+        align (0.0, 1.0)
+        button:
+            hover_background "#04408f"
+            action [Return(value = True), Hide("pass_game")]
+            text 'Пропустить':
+                style style.mini_game_text
+                align (0.0, 0.0)
+                size 50
+                slow_cps 10
 
 
 screen print(text1):

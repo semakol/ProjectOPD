@@ -21,7 +21,7 @@ init python:
             self.start = False
         
         def GetWordsFile(self, num):
-            f = [i.replace('\n', '').upper() for i in open(os.path.join( renpy.config.gamedir, f"New{num}.txt"))]
+            f = [i.replace('\n', '').upper() for i in open(os.path.join( renpy.config.gamedir, f"passwords/New{num}.txt"))]
             return f
 
         def DoList(self):

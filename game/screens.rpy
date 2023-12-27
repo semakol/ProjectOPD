@@ -1,9 +1,10 @@
 ﻿screen scene_num(n = 0):
-    frame:
-        style style.mini_game_frame
-        align (0, 0)
-        text str(n):
-            size 200
+    # frame:
+    #     style style.mini_game_frame
+    #     align (0, 0)
+    #     text str(n):
+    #         size 200
+    pass
 
 ################################################################################
 ## Инициализация
@@ -393,6 +394,7 @@ screen main_menu():
 
     add "gui/My/logo.png":
         xalign 0.5
+        ypos -20
         zoom 0.8  
 
     vbox:
@@ -701,15 +703,15 @@ screen file_slots(title):
 
                     textbutton _(">") action FilePageNext()
 
-                if config.has_sync:
-                    if CurrentScreenName() == "save":
-                        textbutton _("Синхронизация загрузки"):
-                            action UploadSync()
-                            xalign 0.5
-                    else:
-                        textbutton _("Скачать Sync"):
-                            action DownloadSync()
-                            xalign 0.5
+                # if config.has_sync:
+                #     if CurrentScreenName() == "save":
+                #         textbutton _("Синхронизация загрузки"):
+                #             action UploadSync()
+                #             xalign 0.5
+                #     else:
+                #         textbutton _("Скачать Sync"):
+                #             action DownloadSync()
+                #             xalign 0.5
 
 
 style page_label is gui_label
