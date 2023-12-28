@@ -13,10 +13,23 @@ define S = Character('София', color='#8db913')
 
 transform toleft:
     ypos 200 xalign 0.0
-    linear 2 xalign -1.0
+    linear 3 xalign -1.0
 
 transform logovoright:
-    zoom 0.8 align (0.8, 0.9) 
+    zoom 1.5
+    xalign 0.95
+    ypos 300
+
+transform logovoleft:
+    zoom 0.8
+    xalign 0.1 
+    ypos 300
+    xzoom -1
+
+transform logovocenter:
+    zoom 0.8
+    xalign 0.47 
+    ypos 300
 
 transform sercenter:
     zoom 0.9 align (0.5, 1.0)
@@ -233,6 +246,10 @@ label scene4: # Тренировка
 
     I 'Пока тебя не было, я обнаружил несколько странных активностей в сети нашей компании. Проведенная нами проверка системы безопасности раскрыла некоторые подозрительные действия.'
 
+    hide david
+    
+    scene monitor 
+    
     D 'Звучит серьёзно.'
 
     I 'Сначала нам нужно провести более глубокое исследование. Нужно проверить логи и журналы, чтобы вы могли анализировать данные на предмет несанкционированного доступа или подозрительной активности'
@@ -280,6 +297,8 @@ label scene4: # Тренировка
 label scene5: # Нападение
 
     show screen scene_num(5)
+
+    scene monitor
 
     D 'Игорь! В системе найден скрипт удалённого доступа. Код красный, они положили антивирус и запустили ещё больше вредоносного ПО.'
 
@@ -343,7 +362,7 @@ label scene6: # Расшифровка
 
     scene main_office with dissolve
 
-    show david with dissolve
+    show david
 
     I 'Я и забыл, сегодня же к нам приводят студентов. “КиберЛок” умеет привлекать новых людей, особенно в такие праздники.'
 
@@ -398,7 +417,7 @@ label scene7: # Студенты
 
     show screen scene_num(7)
 
-    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.01
+    play ambient 'audio/effects/tolpy.mp3' fadein 1.0 volume 0.01
 
     scene intervie with fade
 
@@ -423,6 +442,8 @@ label scene8: # Осмотр файла
     show screen scene_num(8)
 
     scene main_office with fade
+
+    play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.01
 
     show david
 
@@ -513,7 +534,10 @@ label scene10: # Увольнение*
 
         I '(думает) Никогда ещё не начинал свой день с такой напряжённой атмосферы в отделе.'
 
-        show dir with dissolve
+        show dir:
+            xalign 0.5
+            yalign 1.2
+        with dissolve
 
         I 'Доброе утро, Виктор Павлович.'
 
@@ -656,6 +680,10 @@ label scene14: # Врыв
 
             show olg at logovoright with dissolve 
 
+            show al at logovoleft with dissolve
+
+            show mich at logovocenter with dissolve
+
             I 'ВСЕМ СТОЯТЬ! СЮДА УЖЕ ЕДЕТ ПОЛИЦИЯ!'
 
             nei 'А вот и он. А полицией мог и не пугать, мы же видели, что ты никому не звонил.'
@@ -684,6 +712,10 @@ label scene14: # Врыв
 
             show olg at logovoright with dissolve 
 
+            show al at logovoleft with dissolve
+
+            show mich at logovocenter with dissolve 
+
             nei 'О ГОСПОДИ!'
 
             nei 'Фух, это он. Как-то смог пробраться через вентиляцию и сломал её.'
@@ -693,6 +725,8 @@ label scene14: # Врыв
             nei 'Чёрт, теперь вентиляцию чинить.'
 
         'Перелезть через окно':
+
+            scene okno with fade
 
             I 'Они плохо закрыли окно. Я могу незаметно проникнуть к ним внутрь.'
 
@@ -706,17 +740,25 @@ label scene14: # Врыв
 
             show olg at logovoright with dissolve 
 
+            show al at logovoleft with dissolve
+
+            show mich at logovocenter with dissolve 
+
             nei 'Добро пожаловать, Игорь!'
     
     jump scene15
 
-label scene15: # Знакомство (Концовка 1)
+label scene15: # Знакомство
 
     show screen scene_num(15)
 
     scene logovo
 
-    show olg at logovoright
+    show olg at logovoright 
+
+    show al at logovoleft
+
+    show mich at logovocenter
 
     I 'Вы заманили меня? Откуда вы знаете моё имя?'
 
@@ -756,7 +798,11 @@ label scene16: # Общение с командой
 
     scene logovo
 
-    show olg at logovoright
+    show olg at logovoright 
+
+    show al at logovoleft
+
+    show mich at logovocenter
 
     I 'Ладно, я решил. Я помогу вам остановить “КиберЛок”, но после я вас покину.'
 
@@ -776,7 +822,11 @@ label scene16: # Общение с командой
 
     O 'Пока можешь отдохнуть и подготовиться к миссии.'
 
-    hide olg
+    hide olg with dissolve
+
+    hide al with dissolve
+
+    hide mich with dissolve
 
     $ flag1 = True
     $ flag2 = True
@@ -791,6 +841,9 @@ label scene16: # Общение с командой
                         I ''
                         '[choices[0]]':
                             if choices[0] != 'Поговорил':
+
+                                show mich at logovocenter with dissolve
+
                                 I 'Приятно познакомиться, я Игорь.'
 
                                 M 'Да, я знаю.'
@@ -809,10 +862,15 @@ label scene16: # Общение с командой
 
                                 I 'Понял, спасибо'
 
+                                hide mich with dissolve
+
                                 $ choices[0] = 'Поговорил'
 
                         '[choices[1]]':
                             if choices[1] != 'Поговорил':
+                                
+                                show al at logovocenter with dissolve
+
                                 I 'Привет, Александр, правда взломал мой телефон?'
 
                                 Al 'Не бойся, Ольга уже позаботилась о том, что твой телефон теперь в безопасности.'
@@ -826,6 +884,8 @@ label scene16: # Общение с командой
                                 Al 'Мы хотели заработать денег.'
 
                                 Al 'И что за допрос? Хватит отвлекать меня от работы.'
+
+                                hide al with dissolve
 
                                 $ choices[1] = 'Поговорил'
 
@@ -1019,6 +1079,10 @@ label scene19: # Планирование
         
         'Сломать сервера вручную':
             O 'Ломать сервера руками не стоит. Тебе нужно будешь всего-лишь загрузить вирус в сервера.'
+
+    show al at logovoleft with dissolve
+
+    show mich at logovocenter with dissolve 
         
     O 'После чего мы начнём транслировать уже готовый компромат на “КиберЛок” и им настанет конец.'
 
