@@ -212,10 +212,12 @@ label scene4: # Тренировка
     
     $ flag = True
     while flag:
+        play music 'audio/minigame.ogg' fadein 0.5
         stop ambient fadeout 0.5
         $ miniGame1 = HakingGame(0, 6, True)
         call screen miniGame(game = miniGame1) with dissolve
         $ miniGame1 = None
+        stop music fadeout 0.5
         play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
         if _return:
             I 'Хорошо получилось'
@@ -265,10 +267,13 @@ label scene4: # Тренировка
     $ flag = True
     $ trying = 0
     while flag:
+        play music 'audio/minigame.ogg' fadein 0.5 
         stop ambient fadeout 0.5
-        $ miniGame1 = HakingGame(120, 7)
+        pause 0.5
+        $ miniGame1 = HakingGame(120, 7, timer = False)
         call screen miniGame(game = miniGame1) with dissolve
         $ miniGame1 = None
+        stop music fadeout 0.5
         play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
         if _return:
             I 'Хорошо получилось'
@@ -382,11 +387,13 @@ label scene6: # Расшифровка
     $ trying = 0
     $ flag = True
     while flag:
-
+        play music 'audio/minigame.ogg' fadein 0.5
         stop ambient fadeout 0.5
+        pause 0.5
         $ miniGame1 = HakingGame(100, 8)
         call screen miniGame(game = miniGame1)
         $ miniGame1 = None
+        stop music fadeout 0.5
         play ambient 'audio/effects/office.mp3' fadein 2.0 volume 0.1
 
         if _return:
@@ -903,10 +910,12 @@ label scene16: # Общение с командой
                     $ trying = 0
                     $ flag = True
                     while flag:
+                        play music 'audio/minigame.ogg' fadein 0.5
+                        pause 0.5
                         $ miniGame1 = HakingGame(80, 8)
                         call screen miniGame(game = miniGame1)
                         $ miniGame1 = None
-
+                        stop music fadeout 0.5
                         if _return:
                             I 'Хорошо получилось'
                             $ flag = False
@@ -941,10 +950,12 @@ label scene16: # Общение с командой
                             $ trying = 0
                             $ flag = True
                             while flag:
+                                play music 'audio/minigame.ogg' fadein 0.5
+                                pause 0.5
                                 $ miniGame1 = HakingGame(60, 8)
                                 call screen miniGame(game = miniGame1)
                                 $ miniGame1 = None
-
+                                stop music fadeout 0.5
                                 if _return:
                                     I 'Хорошо получилось'
                                     $ flag = False
@@ -1164,11 +1175,13 @@ label scene21: # Серверная
     $ flag = True
     $ trying = 0
     while flag:
-        stop ambient
+        play music 'audio/minigame.ogg' fadein 0.5
+        stop ambient fadeout 0.5
+        pause 0.5
         $ miniGame1 = HakingGame(40, 8)
         call screen miniGame(game = miniGame1)
         $ miniGame1 = None
-
+        stop music fadeout 0.5
         play ambient 'audio/effects/server.mp3' fadein 0.5 volume 0.1
 
         if _return:
